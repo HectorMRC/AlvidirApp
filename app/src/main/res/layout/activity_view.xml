@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".ViewActivity">
+
+    <include
+        android:id="@+id/view_action_bar"
+        layout="@layout/sub_action_bar"/>
+
+</LinearLayout>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:gravity="bottom">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+
+        android:orientation="horizontal"
+        android:gravity="center|end"
+        android:animateLayoutChanges="true">
+
+        <TextView android:id="@+id/app_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:text="@string/app_name"
+            android:textSize="18sp"
+            android:gravity="start|center"
+            android:visibility="visible"
+            android:layout_marginStart="20dp"/>
+
+        <ImageButton android:id="@+id/ic_search"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+
+            android:src="@drawable/ic_list_search"
+            android:padding="14dp"
+            android:scaleType="fitCenter"
+            android:background="@color/transparent"/>
+
+        <EditText android:id="@+id/list_search"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+
+            android:hint="@string/cercar"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:inputType="textFilter"
+            android:background="@color/transparent"/>
+
+        <ImageButton android:id="@+id/ic_filter"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+
+            android:src="@drawable/ic_list_filter"
+            android:padding="14dp"
+            android:scaleType="fitCenter"
+            android:background="@color/transparent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+
+        android:alpha="0.5"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+
+        android:alpha="0.5"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp">
+
+        <Button android:id="@+id/sort_first"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:text="@string/z_a"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+
+            android:background="@color/transparent"/>
+
+        <TextView android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center"
+
+            android:text="@string/sense_resultats"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="12sp"/>
+
+        <Button android:id="@+id/sort_second"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:text="@string/a_z"
+            android:textAlignment="textEnd"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+
+            android:background="@color/transparent"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+
+        android:alpha="0.5"
+        android:background="@color/black" />
+
+</LinearLayout>

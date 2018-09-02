@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:menuCategory="alternative"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/select_català"
+            android:title="@string/catala"
+            android:checked="true"/>
+
+        <item
+            android:id="@+id/select_alvidir"
+            android:title="@string/app_name"
+            android:checked="true"/>
+
+    </group>
+
+    <group android:menuCategory="container">
+        <item
+            android:id="@+id/select_match"
+            android:title="@string/comença" />
+    </group>
+</menu>

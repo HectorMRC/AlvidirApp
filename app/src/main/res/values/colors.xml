@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--DEFAULTS-->
+    <color name="colorPrimary">#435C6D</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#76488c</color>
+
+    <!--SOLIDS-->
+    <color name="black">#000000</color>
+    <color name="softBlack">#99000000</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="darkGray">#FF333333</color>
+    <color name="solidGray">#999999</color>
+    <color name="clearGray">#F3F3F3</color>
+    <color name="grayBlue">#435C6D</color>
+    <color name="aquaBlue">#287186</color>
+    <color name="orange">#DCB453</color>
+    <color name="green">#8ab306</color>
+
+    <!--SEMIS-->
+    <color name="transparent">#00000000</color>
+    <color name="softWhite">#EEFFFFFF</color>
+    <color name="nonOpaqueWhite">#66FFFFFF</color>
+    <color name="transpWhite">#09FFFFFF</color>
+
+</resources>

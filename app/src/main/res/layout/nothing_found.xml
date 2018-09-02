@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.carnice.morales.hector.alvidiriel.MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:background="@color/transparent"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+
+        android:layout_marginBottom="15dp"
+        android:gravity="center|bottom">
+
+        <ImageView
+            android:src="@drawable/ic_nothing"
+            android:scaleType="fitCenter"
+
+            android:layout_width="170dp"
+            android:layout_height="170dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:orientation="vertical"
+        android:gravity="center|top">
+
+        <TextView
+            android:text="@string/empty_warn"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:textAllCaps="true"
+
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+
+            android:gravity="center|top"
+            android:layout_gravity="center|top"
+            tools:ignore="SmallSp" />
+
+        <Button
+            android:id="@+id/afegir_from_empty"
+
+            android:text="@string/afegir"
+            android:textAllCaps="true"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_button"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>

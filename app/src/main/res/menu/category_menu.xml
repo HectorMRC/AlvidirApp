@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <group
+        android:checkableBehavior="all"
+        android:menuCategory="container">
+
+        <item
+            android:id="@+id/cat_adjectiu"
+            android:checked="false"
+            android:title="@string/adj" />
+
+        <item
+            android:id="@+id/cat_adverbi"
+            android:checked="false"
+            android:title="@string/adv" />
+
+        <item
+            android:id="@+id/cat_conjunció"
+            android:checked="false"
+            android:title="@string/conj" />
+
+        <item
+            android:id="@+id/cat_declinació"
+            android:checked="false"
+            android:title="@string/dec" />
+
+        <item
+            android:id="@+id/cat_determinant"
+            android:checked="false"
+            android:title="@string/det" />
+
+        <item
+            android:id="@+id/cat_expressió"
+            android:checked="false"
+            android:title="@string/inter" />
+
+        <item
+            android:id="@+id/cat_nom"
+            android:checked="false"
+            android:title="@string/nom" />
+
+        <item
+            android:id="@+id/cat_preposició"
+            android:checked="false"
+            android:title="@string/prep" />
+
+        <item
+            android:id="@+id/cat_pronom"
+            android:checked="false"
+            android:title="@string/pron" />
+
+        <item
+            android:id="@+id/cat_verb"
+            android:checked="false"
+            android:title="@string/verb" />
+
+    </group>
+</menu>

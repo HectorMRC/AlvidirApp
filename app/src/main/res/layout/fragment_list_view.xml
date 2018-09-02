@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.carnice.morales.hector.alvidiriel.Fragments.ListViewFragment"
+
+    android:layout_weight="1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/android:list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:smoothScrollbar="true"/>
+
+        <include android:id="@+id/nothing_found"
+            layout="@layout/nothing_found"
+            android:visibility="gone"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</FrameLayout>

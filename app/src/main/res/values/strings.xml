@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Alvidir</string>
+    <string name="z_a">z/a</string>
+    <string name="a_z">a/z</string>
+    <string name="cercar">Cercar</string>
+    <string name="sense_resultats">Sense resultats</string>
+    <string name="recent">Recent</string>
+    <string name="traduir">Traduir</string>
+    <string name="eines">Eines</string>
+    <string name="catala">Català</string>
+    <string name="afegir">Afegir</string>
+    <string name="actualitza">Actualitzar</string>
+    <string name="esborra">Esborrar</string>
+    <string name="cancelar">Ignorar</string>
+    <string name="editar">Editar</string>
+    <string name="referenciar">Referir</string>
+    <string name="carregar">Navegar</string>
+    <string name="salva">Guardar</string>
+
+    <string name="empty_warn">Vaja! Sembla que no s\'hi ha trobat cap coincidencia.</string>
+    <string name="comença">Comença per…</string>
+    <string name="conté">Conté…</string>
+    <string name="estricte">Igual a…</string>
+    <string name="repetir">Repetits</string>
+    <string name="filtre">Filtrar</string>
+
+    <string name="add_titol">Elements de la definició: </string>
+    <string name="hint_for_word">Mot a registrar</string>
+    <string name="hint_for_tran">Traducció</string>
+    <string name="hint_for_info">"Dades d'interés"</string>
+    <string name="hint_for_equ_word">Mot a referir</string>
+    <string name="hint_for_equ_tran">Traducció a referir</string>
+    <string name="hint_for_equ_info">"Mot equivalent"</string>
+    <string name="equ_ind">"Equ. a "</string>
+    <string name="equ">Equivalencia</string>
+    <string name="tipus">Categories</string>
+    <string name="arrel">Ves a l\'arrel</string>
+
+    <string name="commit_insert">Visca! S\'ha actualitzat correctament.</string>
+    <string name="commit_advanced">Visca! L\'acció s\'ha completat sense incidents.</string>
+    <string name="reboke_action">Vaja… Sembla que s\'ha produit algun error. </string>
+
+    <string name="err_root_not_found">No s\'ha trobat l\'arrel definida.</string>
+    <string name="err_modify_category">La categoria d\'una equivalencia ve donada per l\'arrel; ves-hi per modificar-la.</string>
+    <string name="err_empty_elements">Ep! Vigila que cap dels elements importants no estigui buit.</string>
+    <string name="err_equ_not_match">Compte! La definició que pretens referenciar és inaccessible.</string>
+    <string name="item_select_title">Modificar el contingut?</string>
+    <string name="item_select_subtitle">Recorda que qualsevol canvi serà irreversible.</string>
+
+    <string name="det">Determinant</string>
+    <string name="dec">Declinació</string>
+    <string name="pron">Pronom</string>
+    <string name="verb">Verb</string>
+    <string name="adv">Adverbi</string>
+    <string name="prep">Preposició</string>
+    <string name="conj">Conjunció</string>
+    <string name="nom">Nom</string>
+    <string name="adj">Adjectiu</string>
+    <string name="inter">Interjecció</string>
+
+    <!--Paraules clau per a la descripció-->
+    <string name="divider">__divider__</string>
+    <string name="assigner">Pel que fa a:</string>
+
+</resources>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:id="@+id/item_background"
+    android:background="@color/transparent"
+    android:orientation="horizontal"
+    android:animateLayoutChanges="true">
+
+    <LinearLayout android:id="@+id/item_flag"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:alpha="0.9"
+
+        android:visibility="gone"
+        android:background="@color/clearGray"
+        android:orientation="horizontal"
+        android:animateLayoutChanges="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+
+            android:alpha="0.9"
+            android:orientation="horizontal"
+            android:animateLayoutChanges="true">
+
+            <TextView android:id="@+id/item_word"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:layout_marginStart="10dp"
+                android:gravity="center|start"
+                android:textColor="@color/white" />
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp">
+
+                <TextView android:id="@+id/item_tran"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|end"
+
+                    android:fontFamily="@font/font"
+                    android:textSize="20sp"
+                    android:gravity="center|end"
+                    android:textColor="@color/white"/>
+
+                <TextView android:id="@+id/item_font"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="3dp"
+
+                    android:textSize="11sp"
+                    android:gravity="center|end"
+                    android:textColor="@color/white"
+                    android:alpha="0.7"
+                    tools:ignore="SmallSp" />
+
+            </android.support.design.widget.CoordinatorLayout>
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/item_options"
+            android:animateLayoutChanges="true"
+            layout="@layout/fragment_options" />
+
+    </LinearLayout>
+
+</LinearLayout>

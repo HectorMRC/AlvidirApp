@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.carnice.morales.hector.alvidiriel.MainActivity"
+
+    android:background="@drawable/background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/action_bar"
+            layout="@layout/main_action_bar" />
+
+        <include
+            android:id="@+id/nothing_found"
+            layout="@layout/nothing_found"/>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/SwipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <fragment android:id="@+id/fragment_ListView"
+                android:name="com.carnice.morales.hector.alvidiriel.Fragments.ListViewFragment"
+                tools:layout="@layout/fragment_list_view"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:animateLayoutChanges="true"
+        android:visibility="gone"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/ic_add"
+        android:src="@drawable/ic_list_add"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+
+        app:backgroundTint="@color/white"
+        app:fabSize="normal"/>
+
+</android.support.design.widget.CoordinatorLayout>

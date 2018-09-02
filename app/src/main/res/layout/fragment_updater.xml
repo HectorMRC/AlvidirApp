@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:layout_gravity="bottom"
+    android:orientation="vertical"
+    android:background="@color/softWhite"
+
+    android:animateLayoutChanges="true"
+
+    tools:context=".Fragments.UpdaterFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:animateLayoutChanges="true">
+
+            <TextView
+                android:id="@+id/add_titol"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/add_titol"
+                android:textSize="10sp"
+                android:textColor="@color/darkGray"
+
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="10dp"
+                tools:ignore="SmallSp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:animateLayoutChanges="true">
+
+                <EditText
+                    android:id="@+id/text_word"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:hint="@string/hint_for_word"
+                    android:textColorHint="@color/solidGray"/>
+
+                <ImageButton
+                    android:id="@+id/swap"
+                    android:src="@drawable/ic_swap_content"
+
+                    android:padding="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:background="@color/transparent"/>
+
+                <EditText
+                    android:id="@+id/text_tran"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:hint="@string/hint_for_tran"
+                    android:textColorHint="@color/solidGray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/equ_selector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal"
+                android:animateLayoutChanges="true"
+
+                android:visibility="gone">
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/equ_first"
+
+                    android:text="@string/equ_ind"
+                    android:inputType="text"
+                    android:textColor="@color/solidGray"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:checked="false" />
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/equ_second"
+
+                    android:text="@string/equ_ind"
+                    android:inputType="text"
+                    android:textColor="@color/solidGray"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="15dp"
+
+                    android:checked="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/selector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:animateLayoutChanges="true">
+
+                <EditText
+                    android:id="@+id/text_info"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/black"
+                    android:hint="@string/hint_for_info"
+                    android:textColorHint="@color/solidGray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:animateLayoutChanges="true">
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/equival"
+
+                        android:text="@string/equ"
+                        android:textColor="@color/solidGray"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+
+                        android:checked="false" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+
+                        android:background="@color/darkGray"
+                        android:alpha="0.5"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/categories"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+
+                            android:hint="@string/tipus"
+                            android:textColor="@color/solidGray"
+                            tools:ignore="NestedWeights" />
+
+                        <ImageButton
+                            android:src="@drawable/ic_expand"
+                            android:scaleType="fitCenter"
+
+                            android:id="@+id/expand"
+                            android:background="@color/transparent"
+                            android:layout_marginEnd="8dp"
+                            android:layout_gravity="center"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.7" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/goto_root"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+
+                android:text="@string/arrel"
+                android:textSize="10sp"
+                android:textColor="@color/transparent"
+                android:textAllCaps="true"
+
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/transparent"
+                android:gravity="center"
+                tools:ignore="SmallSp" />
+
+            <LinearLayout
+                android:id="@+id/separa"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+
+                android:animateLayoutChanges="true"
+                android:background="@color/solidGray"
+                android:orientation="horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:animateLayoutChanges="true">
+
+                    <Button
+                        android:id="@+id/afegir"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:background="@color/transparent"
+
+                        android:text="@string/afegir"
+                        android:textColor="@color/aquaBlue"
+                        android:textAllCaps="true"
+                        android:gravity="center"/>
+
+                    <Button
+                        android:id="@+id/ignorar"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:background="@color/transparent"
+
+                        android:text="@string/cancelar"
+                        android:textColor="@color/darkGray"
+                        android:textAllCaps="true"
+                        android:gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
