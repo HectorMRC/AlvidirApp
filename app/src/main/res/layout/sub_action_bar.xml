@@ -49,13 +49,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-
-        android:alpha="0.5"
-        android:background="@color/black" />
-
     <include android:id="@+id/onItem_view"
         layout="@layout/on_item_view"/>
 

@@ -61,5 +61,6 @@
     <!--Paraules clau per a la descripció-->
     <string name="divider">__divider__</string>
     <string name="assigner">Pel que fa a:</string>
+    <string name="no_sinonims">Sense sinonims</string>
 
 </resources>
