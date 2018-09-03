@@ -18,13 +18,6 @@
         android:gravity="center|end"
         android:animateLayoutChanges="true">
 
-        <LinearLayout android:id="@+id/onItem_flag"
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-
-            android:orientation="horizontal"
-            android:background="@color/green"/>
-
         <ImageButton android:id="@+id/onItem_back"
             android:layout_width="45dp"
             android:layout_height="match_parent"
@@ -35,22 +28,15 @@
             android:scaleType="fitCenter"
             android:background="@color/transparent"/>
 
-        <android.support.design.widget.CoordinatorLayout
+        <TextView android:id="@+id/app_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
 
-            <TextView android:id="@+id/onItem_word"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-
-                android:text="Català - Alvidir"
-                android:textSize="18sp"
-                android:gravity="start|center"
-                android:visibility="visible" />
-
-        </android.support.design.widget.CoordinatorLayout>
+            android:text="@string/app_name"
+            android:textSize="18sp"
+            android:gravity="start|center"
+            android:visibility="visible" />
 
         <ImageButton android:id="@+id/onItem_options"
             android:layout_width="45dp"
@@ -59,7 +45,7 @@
             android:src="@drawable/ic_expand"
             android:padding="14dp"
             android:scaleType="fitCenter"
-            android:background="@color/transparent"/>
+            android:background="@color/transparent" />
 
     </LinearLayout>
 
@@ -70,20 +56,7 @@
         android:alpha="0.5"
         android:background="@color/black" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-
-        android:text="Categoria"
-        android:textAlignment="center"
-        android:textSize="12sp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-
-        android:alpha="0.5"
-        android:background="@color/black" />
+    <include android:id="@+id/onItem_view"
+        layout="@layout/on_item_view"/>
 
 </LinearLayout>
