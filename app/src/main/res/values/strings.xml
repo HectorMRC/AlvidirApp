@@ -63,4 +63,7 @@
     <string name="assigner">Pel que fa a:</string>
     <string name="no_sinonims">Sense sinonims</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+    android:animateLayoutChanges="true"
     android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".ViewActivity">
@@ -12,5 +13,12 @@
     <include
         android:id="@+id/view_action_bar"
         layout="@layout/sub_action_bar"/>
+
+    <fragment android:id="@+id/fragment_OnItem"
+        android:name="com.carnice.morales.hector.alvidiriel.Fragments.OnItemFragment"
+        tools:layout="@layout/fragment_on_item"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
