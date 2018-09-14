@@ -15,26 +15,26 @@ import com.carnice.morales.hector.alvidiriel.R;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends BaseAdapter implements Subject,
+public class ListViewAdapter extends BaseAdapter implements Subject,
                                                           Linker<String, String> {
 
     private LayoutInflater inflater;
-    private ArrayList<CustomObject> AllItems;
+    private ArrayList<ListViewObject> AllItems;
     private Linker<String, String> Linked;
     private boolean withFlag;
 
     private static ArrayList<Observer> Observers;
-    private static CustomAdapter CurrentInstance;
+    private static ListViewAdapter CurrentInstance;
     private static OptionsFragment OptControler;
 
     private Pair<String, String> SelectedItem;
     private boolean showOptions = false;
 
-    public CustomAdapter(){
+    public ListViewAdapter(){
         Observers = new ArrayList<>();
     }
 
-    public CustomAdapter(Context context, ArrayList<CustomObject> AllItems, boolean withFlag){
+    public ListViewAdapter(Context context, ArrayList<ListViewObject> AllItems, boolean withFlag){
         inflater = LayoutInflater.from(context);
 
         Observers = new ArrayList<>();
@@ -53,7 +53,7 @@ public class CustomAdapter extends BaseAdapter implements Subject,
     }
 
     @Override
-    public CustomObject getItem(int i) {
+    public ListViewObject getItem(int i) {
         return AllItems.get(i);
     }
 
@@ -64,11 +64,11 @@ public class CustomAdapter extends BaseAdapter implements Subject,
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder holder;
+        ListViewHolder holder;
         if(view == null){
             view = inflater.inflate(R.layout.list_view_adapter, viewGroup, false);
 
-            holder = new ViewHolder();
+            holder = new ListViewHolder();
             holder.thisWord = view.findViewById(R.id.item_word);
             holder.thisTran = view.findViewById(R.id.item_tran);
             holder.thisFont = view.findViewById(R.id.item_font);
@@ -78,7 +78,7 @@ public class CustomAdapter extends BaseAdapter implements Subject,
             holder.frameLayout = view.findViewById(R.id.item_options);
             view.setTag(holder);
 
-        } else holder = (ViewHolder) view.getTag();
+        } else holder = (ListViewHolder) view.getTag();
 
         holder.thisWord.setText(getItem(i).getWord());
         holder.thisFont.setText(getItem(i).getTran());
@@ -129,7 +129,7 @@ public class CustomAdapter extends BaseAdapter implements Subject,
         if(this.Linked == linker) this.Linked = null;
     }
 
-    private boolean show(ViewHolder holder, Pair<String, String> item){
+    private boolean show(ListViewHolder holder, Pair<String, String> item){
         if(item == null) return false;
         return item.first.equals(holder.thisWord.getText().toString()) &&
                 item.second.equals(holder.thisFont.getText().toString()) &&
@@ -143,7 +143,7 @@ public class CustomAdapter extends BaseAdapter implements Subject,
     }
 
     //FUNCIONS PÚBLIQUES:
-    public void replaceAll(ArrayList<CustomObject> AllItems, boolean withFlag){
+    public void replaceAll(ArrayList<ListViewObject> AllItems, boolean withFlag){
         this.AllItems.clear();
         this.AllItems.addAll(AllItems);
         this.withFlag = withFlag;
@@ -160,8 +160,8 @@ public class CustomAdapter extends BaseAdapter implements Subject,
         return SelectedItem;
     }
 
-    public static CustomAdapter getCurrentInstance(){
-        if(CurrentInstance == null) CurrentInstance = new CustomAdapter();
+    public static ListViewAdapter getCurrentInstance(){
+        if(CurrentInstance == null) CurrentInstance = new ListViewAdapter();
         return CurrentInstance;
     }
 

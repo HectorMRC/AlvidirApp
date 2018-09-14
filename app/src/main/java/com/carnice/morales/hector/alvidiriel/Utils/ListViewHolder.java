@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.carnice.morales.hector.alvidiriel.Fragments.OptionsFragment;
 
-public class ViewHolder {
+public class ListViewHolder {
     TextView thisWord;
     TextView thisTran;
     TextView thisFont;

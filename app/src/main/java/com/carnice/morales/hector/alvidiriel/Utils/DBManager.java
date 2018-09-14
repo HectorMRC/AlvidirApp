@@ -236,6 +236,16 @@ public class DBManager extends DBCoordinator{
     }
 
     /*pre: la definició composta per word i tran existeix a la base de dades.*/
+    /*post: s'ha retornat la tupla sencera, amb tots els seus components.*/
+    public ContentValues getTuple(String word, String tran){
+        String[] columns = getMainColumns();
+        String where = columns[1].concat(" = ? AND ").concat(columns[2]).concat(" = ? ");
+        String[] args = new String[]{word, tran};
+
+        return getAllTuples(where, args, null, null, null, 0).get(0);
+    }
+
+    /*pre: la definició composta per word i tran existeix a la base de dades.*/
     /*post: s'ha retornat la tupla pare, és a dir, aquella en que Skin és 0.*/
     public ContentValues getRoot(String word, String tran){
         String[] columns = getMainColumns();

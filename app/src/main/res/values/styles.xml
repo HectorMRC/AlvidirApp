@@ -13,6 +13,7 @@
         <item name="android:adjustViewBounds">true</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textAppearanceButton">@style/Base.TextAppearance.AppCompat</item>
 
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

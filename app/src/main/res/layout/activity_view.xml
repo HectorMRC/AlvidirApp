@@ -14,11 +14,24 @@
         android:id="@+id/view_action_bar"
         layout="@layout/sub_action_bar"/>
 
-    <fragment android:id="@+id/fragment_OnItem"
-        android:name="com.carnice.morales.hector.alvidiriel.Fragments.OnItemFragment"
-        tools:layout="@layout/fragment_on_item"
+    <!--fragment android:id="@+id/fragment_OnItem"
+        android:name="com.carnice.morales.hector.alvidiriel.Fragments.RecyclerFragment"
+        tools:layout="@layout/fragment_recycler"
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"/-->
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/onItem_ViewPager"/>
+    
+    <LinearLayout android:id="@+id/onItem_dots"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+
+        android:orientation="horizontal"
+        android:gravity="center"/>
 
 </LinearLayout>

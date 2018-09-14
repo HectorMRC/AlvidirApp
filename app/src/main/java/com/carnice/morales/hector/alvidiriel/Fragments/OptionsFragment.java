@@ -15,10 +15,9 @@ import android.widget.LinearLayout;
 import com.carnice.morales.hector.alvidiriel.Interfaces.Linker;
 import com.carnice.morales.hector.alvidiriel.MainActivity;
 import com.carnice.morales.hector.alvidiriel.R;
-import com.carnice.morales.hector.alvidiriel.Utils.CustomAdapter;
+import com.carnice.morales.hector.alvidiriel.Utils.ListViewAdapter;
 import com.carnice.morales.hector.alvidiriel.Utils.DBManager;
 import com.carnice.morales.hector.alvidiriel.Utils.FilesManager;
-import com.carnice.morales.hector.alvidiriel.Utils.MainDBContract;
 import com.carnice.morales.hector.alvidiriel.Utils.Toaster;
 
 import java.io.IOException;
@@ -39,7 +38,7 @@ public class OptionsFragment extends Fragment implements View.OnClickListener, L
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        (this.Getter = CustomAdapter.getCurrentInstance()).setLinker(this, null);
+        (this.Getter = ListViewAdapter.getCurrentInstance()).setLinker(this, null);
     }
 
     @Override
@@ -155,7 +154,7 @@ public class OptionsFragment extends Fragment implements View.OnClickListener, L
     }
 
     public void callFromCustomAdapter(){
-        this.Getter = CustomAdapter.getCurrentInstance();
+        this.Getter = ListViewAdapter.getCurrentInstance();
     }
 
     //FUNCIONS AUXILIARS:

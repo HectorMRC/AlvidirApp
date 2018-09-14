@@ -26,7 +26,7 @@ import com.carnice.morales.hector.alvidiriel.Interfaces.Observer;
 import com.carnice.morales.hector.alvidiriel.Interfaces.Subject;
 import com.carnice.morales.hector.alvidiriel.MainActivity;
 import com.carnice.morales.hector.alvidiriel.R;
-import com.carnice.morales.hector.alvidiriel.Utils.CustomAdapter;
+import com.carnice.morales.hector.alvidiriel.Utils.ListViewAdapter;
 import com.carnice.morales.hector.alvidiriel.Utils.DBManager;
 import com.carnice.morales.hector.alvidiriel.Utils.Toaster;
 
@@ -58,7 +58,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
 
-        (Subject = CustomAdapter.getCurrentInstance()).setObserver(this);
+        (Subject = ListViewAdapter.getCurrentInstance()).setObserver(this);
         ItemSelectedGiver = ListViewFragment.getCurrentInstance();
     }
 

@@ -8,19 +8,17 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
 import android.support.v4.util.Pair;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ScrollView;
 
 import com.carnice.morales.hector.alvidiriel.Interfaces.Linker;
 import com.carnice.morales.hector.alvidiriel.MainActivity;
 import com.carnice.morales.hector.alvidiriel.R;
-import com.carnice.morales.hector.alvidiriel.Utils.CustomAdapter;
-import com.carnice.morales.hector.alvidiriel.Utils.CustomObject;
+import com.carnice.morales.hector.alvidiriel.Utils.ListViewAdapter;
+import com.carnice.morales.hector.alvidiriel.Utils.ListViewObject;
 import com.carnice.morales.hector.alvidiriel.ViewActivity;
 
 import java.util.ArrayList;
@@ -29,7 +27,7 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
                                                               AdapterView.OnItemLongClickListener,
                                                               AbsListView.OnScrollListener,
                                                               Linker<Pair<String, String>, String>{
-    private CustomAdapter customAdapter;
+    private ListViewAdapter listViewAdapter;
     private int currentItemOnScroll;
     private static ListViewFragment CurrentInstance;
 
@@ -37,7 +35,7 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setListAdapter(customAdapter);
+        setListAdapter(listViewAdapter);
         CurrentInstance = this;
     }
 
@@ -86,24 +84,27 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(getContext(), ViewActivity.class);
+        intent.putExtra("ThisWord", listViewAdapter.getItem(i).getWord());
+        intent.putExtra("ThisTran", listViewAdapter.getItem(i).getTran());
+        intent.putExtra("ThisFlag", listViewAdapter.getItem(i).getFlag());
         getContext().startActivity(intent);
     }
 
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-        customAdapter.setSelectedItem(new Pair<>(customAdapter.getItem(i).getWord(), customAdapter.getItem(i).getTran()), "0");
+        listViewAdapter.setSelectedItem(new Pair<>(listViewAdapter.getItem(i).getWord(), listViewAdapter.getItem(i).getTran()), "0");
         getListView().smoothScrollToPosition(i);
         return true;
     }
 
     @Override
     public Pair<String, String> returnRequiredData(String requestCode) {
-        return customAdapter.getSelectedItem();
+        return listViewAdapter.getSelectedItem();
     }
 
     @Override
     public void setRequiredData(Pair<String, String> content, String requestCode) {
-        customAdapter.setSelectedItem(content, requestCode);
+        listViewAdapter.setSelectedItem(content, requestCode);
     }
 
     @Override
@@ -117,13 +118,13 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
     }
 
     public boolean onBackPressed(){
-        if(customAdapter.getSelectedItem() == null) return false;
+        if(listViewAdapter.getSelectedItem() == null) return false;
 
-        else if(customAdapter.getDeleteButtonSelected())
-            customAdapter.setSelectedItem(customAdapter.getSelectedItem(), "0");
+        else if(listViewAdapter.getDeleteButtonSelected())
+            listViewAdapter.setSelectedItem(listViewAdapter.getSelectedItem(), "0");
 
-        else if(!customAdapter.getDeleteButtonSelected())
-            customAdapter.setSelectedItem(null, null);
+        else if(!listViewAdapter.getDeleteButtonSelected())
+            listViewAdapter.setSelectedItem(null, null);
 
         return true;
     }
@@ -146,21 +147,21 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
     /*pre: l'atribut tuples no és buit.*/
     /*post: el contingut de la listView s'ha actualitzat pel de l'atribut.*/
     public void refresh(Context context, ArrayList<ContentValues> tuples, String[] key, boolean withFlag){
-        ArrayList<CustomObject> customArray = new ArrayList<>();
+        ArrayList<ListViewObject> customArray = new ArrayList<>();
         for(ContentValues value: tuples) {
-            CustomObject element = new CustomObject(value.getAsString(key[0]), value.getAsString(key[1]), value.getAsInteger(key[2]));
+            ListViewObject element = new ListViewObject(value.getAsString(key[0]), value.getAsString(key[1]), value.getAsInteger(key[2]));
             customArray.add(element);
         }
 
         onAttach(getContext());
-        if(customAdapter == null) customAdapter = new CustomAdapter(context, customArray, withFlag);
-        else customAdapter.replaceAll(customArray, withFlag);
-        customAdapter.notifyDataSetChanged();
+        if(listViewAdapter == null) listViewAdapter = new ListViewAdapter(context, customArray, withFlag);
+        else listViewAdapter.replaceAll(customArray, withFlag);
+        listViewAdapter.notifyDataSetChanged();
     }
 
     /*pre: cert*/
     /*post: s'ha retornat el nombre d'items que te la llista.*/
     public int getCount(){
-        return customAdapter.getCount();
+        return listViewAdapter.getCount();
     }
 }

@@ -4,169 +4,164 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <LinearLayout android:id="@+id/onItem_flag"
-        android:layout_width="10dp"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1px"
 
-        android:alpha="0.9"
-        android:background="@color/green"
-        android:animateLayoutChanges="true"/>
+        android:alpha="0.5"
+        android:background="@color/black" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1px"
+        <LinearLayout android:id="@+id/onItem_flag"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
 
-            android:alpha="0.5"
-            android:background="@color/black" />
-
-        <TextView android:id="@+id/onItem_type"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:gravity="start|center"
-
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp"
-
-            android:textSize="12sp"
-            android:textStyle="italic"
-            android:textColor="@color/aquaBlue"
-            android:text="@string/tipus" />
+            android:alpha="0.9"
+            android:background="@color/green"
+            android:animateLayoutChanges="true"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="vertical">
 
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp">
-
-            <TextView
+            <TextView android:id="@+id/onItem_type"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
+                android:gravity="start|center"
 
-                android:textSize="11sp"
-                android:hint="@string/catala"
-                tools:ignore="SmallSp" />
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
 
-            <TextView android:id="@+id/onItem_word"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-
-                android:text="@string/catala"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:textSize="11sp"
-                android:hint="@string/app_name"
-                tools:ignore="SmallSp" />
+                android:textSize="12sp"
+                android:textStyle="italic"
+                android:textColor="@color/aquaBlue"
+                android:text="@string/tipus" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
+
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp">
 
-                <TextView android:id="@+id/onItem_tran"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
 
-                    android:textSize="20sp"
-                    android:text="@string/app_name"
-                    android:fontFamily="@font/font"/>
+                    android:textSize="11sp"
+                    android:hint="@string/catala"
+                    tools:ignore="SmallSp" />
 
-                <TextView android:id="@+id/onItem_fon"
+                <TextView android:id="@+id/onItem_word"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+
+                    android:text="@string/catala"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:textSize="11sp"
+                    android:hint="@string/app_name"
+                    tools:ignore="SmallSp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView android:id="@+id/onItem_tran"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+
+                        android:textSize="20sp"
+                        android:text="@string/app_name"
+                        android:fontFamily="@font/font"/>
+
+                    <TextView android:id="@+id/onItem_fon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+
+                        android:gravity="end"
+                        android:text="@string/app_name"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+
+                android:alpha="0.5"
+                android:background="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal"
+                android:visibility="visible"
+
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+
+                <Button android:id="@+id/onItem_refr"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:alpha="0.5"
+
+                    android:text="@string/no_sinonims"
+                    android:textAllCaps="false"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+
+                    android:background="@color/transparent"/>
+
+                <Button android:id="@+id/onItem_root"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
 
-                    android:gravity="end"
-                    android:text="@string/app_name"/>
+                    android:visibility="gone"
+                    android:gravity="center"
+                    android:alpha="0.8"
+
+                    android:text="@string/arrel"
+                    android:textAllCaps="false"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorAccent"
+
+                    android:background="@color/transparent"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-
-            android:alpha="0.5"
-            android:background="@color/black" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:orientation="horizontal"
-            android:visibility="visible"
-
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
-
-            <TextView android:id="@+id/onItem_refr"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:alpha="0.5"
-
-                android:text="@string/no_sinonims"
-                android:textAllCaps="false"
-                android:textSize="12sp"
-                android:textColor="@color/black"
-
-                android:background="@color/transparent"/>
-
-            <!--TextView android:id="@+id/onItem_status"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:alpha="0.5"
-
-                android:text="@string/sense_resultats"
-                android:textAllCaps="false"
-                android:textSize="12sp"
-                android:textColor="@color/black"
-
-                android:background="@color/transparent"/-->
-
-            <TextView android:id="@+id/onItem_root"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:alpha="0.8"
-
-                android:text="@string/arrel"
-                android:textAllCaps="false"
-                android:textSize="12sp"
-                android:textColor="@color/colorAccent"
-
-                android:background="@color/transparent"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-
-            android:alpha="0.5"
-            android:background="@color/black" />
-
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+
+        android:alpha="0.5"
+        android:background="@color/black" />
 
 </LinearLayout>
