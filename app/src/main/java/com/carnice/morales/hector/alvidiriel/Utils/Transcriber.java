@@ -1,5 +1,7 @@
 package com.carnice.morales.hector.alvidiriel.Utils;
 
+import java.util.ArrayList;
+
 public class Transcriber {
 
     public String transcribe(String original){
@@ -31,5 +33,9 @@ public class Transcriber {
         original = original.replaceAll("rr", "R");
 
         return original;
+    }
+
+    public ArrayList<String> slicer(String string){
+        return null;
     }
 }

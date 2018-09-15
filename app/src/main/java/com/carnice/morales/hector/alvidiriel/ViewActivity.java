@@ -11,8 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import com.carnice.morales.hector.alvidiriel.Fragments.RecyclerFragment;
 import com.carnice.morales.hector.alvidiriel.Utils.DBManager;
+import com.carnice.morales.hector.alvidiriel.Utils.SliderAdapter;
 import com.carnice.morales.hector.alvidiriel.Utils.Transcriber;
 
 public class ViewActivity extends AppCompatActivity implements View.OnClickListener,
@@ -22,15 +22,13 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton TurnBack, ShowOptions;
     Button RefrButton, RootButton;
 
+    ViewPager SlideViewPager;
     TextView ItemType, ItemWord, ItemTran, ItemFon;
-
-    RecyclerFragment recyclerFragment;
     LinearLayout ItemFlag;
 
-    ViewPager SlideViewPager;
-    LinearLayout DoterLayout;
-
     PopupMenu OptionsMenu;
+
+    private SliderAdapter sliderAdapter;
 
     //OVERRIDES:
     @Override
@@ -85,19 +83,10 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
 
         //iniRecyclerViewFragment();
         setObjectsContent();
-    }
 
-    /*pre: cert*/
-    /*post: s'ha inicialitzat la instancia del RecyclerFragment.*/
-    private void iniRecyclerViewFragment(){
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        recyclerFragment = (RecyclerFragment) fm.findFragmentByTag("fragment_OnItem");
-        if(recyclerFragment == null){
-            android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
-            recyclerFragment = new RecyclerFragment();
-            ft.add(R.id.fragment_ListView, recyclerFragment, "fragment_OnItem");
-            ft.commit();
-        }
+        SlideViewPager = findViewById(R.id.onItem_ViewPager);
+        sliderAdapter = new SliderAdapter(this, getIntent().getExtras().getString("ThisInfo"));
+        SlideViewPager.setAdapter(sliderAdapter);
     }
 
     /*pre: cert*/

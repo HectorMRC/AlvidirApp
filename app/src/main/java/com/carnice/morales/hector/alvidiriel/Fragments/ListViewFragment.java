@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import com.carnice.morales.hector.alvidiriel.Interfaces.Linker;
 import com.carnice.morales.hector.alvidiriel.MainActivity;
 import com.carnice.morales.hector.alvidiriel.R;
+import com.carnice.morales.hector.alvidiriel.Utils.DBManager;
 import com.carnice.morales.hector.alvidiriel.Utils.ListViewAdapter;
 import com.carnice.morales.hector.alvidiriel.Utils.ListViewObject;
 import com.carnice.morales.hector.alvidiriel.ViewActivity;
@@ -87,6 +88,13 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
         intent.putExtra("ThisWord", listViewAdapter.getItem(i).getWord());
         intent.putExtra("ThisTran", listViewAdapter.getItem(i).getTran());
         intent.putExtra("ThisFlag", listViewAdapter.getItem(i).getFlag());
+
+        DBManager dbManager = new DBManager(getContext());
+        String[] keys = dbManager.getMainColumns();
+        ContentValues tupla = dbManager.getTuple(listViewAdapter.getItem(i).getWord(),
+                                                 listViewAdapter.getItem(i).getTran());
+        intent.putExtra("ThisInfo", tupla.getAsString(keys[3]));
+
         getContext().startActivity(intent);
     }
 
