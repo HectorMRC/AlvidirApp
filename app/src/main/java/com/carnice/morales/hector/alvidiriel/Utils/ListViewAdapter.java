@@ -82,7 +82,7 @@ public class ListViewAdapter extends BaseAdapter implements Subject,
 
         holder.thisWord.setText(getItem(i).getWord());
         holder.thisFont.setText(getItem(i).getTran());
-        holder.thisTran.setText(new Transcriber().transcribe(getItem(i).getTran()));
+        holder.thisTran.setText(new TextManager().transcribe(getItem(i).getTran()));
 
         holder.thisFlag.setVisibility(withFlag || show(holder, SelectedItem) ? View.VISIBLE : View.GONE);
         holder.thisFlag.setBackgroundColor(getItem(i).getFlag());

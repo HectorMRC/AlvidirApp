@@ -1,8 +1,19 @@
 package com.carnice.morales.hector.alvidiriel.Utils;
 
-import java.util.ArrayList;
+import android.content.Context;
 
-public class Transcriber {
+import com.carnice.morales.hector.alvidiriel.R;
+
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+public class TextManager {
+
+    private Context context;
+    public TextManager(Context context){
+        this.context = context;
+    }
+    public TextManager(){}
 
     public String transcribe(String original){
         original = original.replaceAll("à", "a");
@@ -35,7 +46,12 @@ public class Transcriber {
         return original;
     }
 
-    public ArrayList<String> slicer(String string){
-        return null;
+    public ArrayList<String> slicer(String content){
+        ArrayList<String> slices = new ArrayList<>();
+        StringTokenizer tokenizer = new StringTokenizer(content, "~");
+
+        while(tokenizer.hasMoreTokens()) slices.add(tokenizer.nextToken());
+
+        return slices;
     }
 }

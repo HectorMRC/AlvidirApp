@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.carnice.morales.hector.alvidiriel.MainActivity"
 
-    android:background="@drawable/background"
+    android:background="@drawable/main_background"
     android:orientation="vertical">
 
     <LinearLayout

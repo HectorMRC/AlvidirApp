@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,21 +14,25 @@ import android.widget.TextView;
 
 import com.carnice.morales.hector.alvidiriel.Utils.DBManager;
 import com.carnice.morales.hector.alvidiriel.Utils.SliderAdapter;
-import com.carnice.morales.hector.alvidiriel.Utils.Transcriber;
+import com.carnice.morales.hector.alvidiriel.Utils.TextManager;
 
 public class ViewActivity extends AppCompatActivity implements View.OnClickListener,
-                                                               View.OnLongClickListener{
+                                                               View.OnLongClickListener,
+                                                               ViewPager.OnPageChangeListener{
 
     //DECLARACIÓ D'OBJECTES:
     ImageButton TurnBack, ShowOptions;
     Button RefrButton, RootButton;
 
-    ViewPager SlideViewPager;
     TextView ItemType, ItemWord, ItemTran, ItemFon;
     LinearLayout ItemFlag;
 
     PopupMenu OptionsMenu;
 
+    LinearLayout DotLayout;
+    TextView[] Dots;
+
+    ViewPager SlideViewPager;
     private SliderAdapter sliderAdapter;
 
     //OVERRIDES:
@@ -60,6 +65,21 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        addDotIndicator(position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
     //FUNCIONS PRIVADES:
     /*pre: cert*/
     /*post: s'han inicialitzat tots els objectes de l'activity.*/
@@ -84,9 +104,14 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
         //iniRecyclerViewFragment();
         setObjectsContent();
 
+        DotLayout = findViewById(R.id.onItem_dot);
+
         SlideViewPager = findViewById(R.id.onItem_ViewPager);
+        SlideViewPager.addOnPageChangeListener(this);
         sliderAdapter = new SliderAdapter(this, getIntent().getExtras().getString("ThisInfo"));
         SlideViewPager.setAdapter(sliderAdapter);
+
+        addDotIndicator(0);
     }
 
     /*pre: cert*/
@@ -97,7 +122,7 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
 
         ItemWord.setText(getIntent().getExtras().getString("ThisWord"));
         ItemFon.setText(getIntent().getExtras().getString("ThisTran"));
-        ItemTran.setText(new Transcriber().transcribe(ItemFon.getText().toString()));
+        ItemTran.setText(new TextManager().transcribe(ItemFon.getText().toString()));
 
         ContentValues tuple = dbManager.getTuple(ItemWord.getText().toString(), ItemFon.getText().toString());
         ItemType.setText(tuple.getAsString(keys[0]));
@@ -114,5 +139,23 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
                                  View.GONE : View.VISIBLE);
 
         ItemFlag.setBackgroundColor(getIntent().getExtras().getInt("ThisFlag"));
+    }
+
+    /*pre: cert*/
+    /*post: s'han generat tants punts com pagines d'info hi hagi.*/
+    public void addDotIndicator(int position){
+        Dots = new TextView[sliderAdapter.getCount()];
+        DotLayout.removeAllViews();
+
+        for(int i = 0; i < sliderAdapter.getCount(); i++){
+            Dots[i] = new TextView(this);
+            Dots[i].setText(Html.fromHtml("&#8226;"));
+            Dots[i].setTextColor(getResources().getColor(i == position?
+                                                         R.color.white : R.color.nonOpaqueWhite,
+                                                        null));
+            Dots[i].setTextSize(35);
+
+            DotLayout.addView(Dots[i]);
+        }
     }
 }

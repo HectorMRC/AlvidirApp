@@ -34,7 +34,7 @@
         android:orientation="vertical"
         android:gravity="center|top">
 
-        <TextView
+        <TextView android:id="@+id/warning"
             android:text="@string/empty_warn"
             android:textColor="@color/white"
             android:textSize="11sp"

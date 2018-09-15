@@ -17,6 +17,8 @@
     <string name="carregar">Navegar</string>
     <string name="salva">Guardar</string>
 
+    <string name="lastPag_warn">No hi ha més informació per veure. Si vols, pots afegir una pàgina nova.</string>
+    <string name="noInfo_warn">Renoi! Encara no s\'hi ha penjat informació. En vols afegir una pàgina?</string>
     <string name="empty_warn">Vaja! Sembla que no s\'hi ha trobat cap coincidencia.</string>
     <string name="comença">Comença per…</string>
     <string name="conté">Conté…</string>
@@ -63,8 +65,6 @@
     <string name="assigner">Pel que fa a:</string>
     <string name="no_sinonims">Sense sinonims</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="agrupar">Agrupar</string>
     <string name="sense_agrupar">Sense agrupar</string>
 
