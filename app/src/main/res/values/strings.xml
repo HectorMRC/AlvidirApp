@@ -16,9 +16,8 @@
     <string name="referenciar">Referir</string>
     <string name="carregar">Navegar</string>
     <string name="salva">Guardar</string>
+    <string name="enrere">Enrere</string>
 
-    <string name="lastPag_warn">No hi ha més informació per veure. Si vols, pots afegir una pàgina nova.</string>
-    <string name="noInfo_warn">Renoi! Encara no s\'hi ha penjat informació. En vols afegir una pàgina?</string>
     <string name="empty_warn">Vaja! Sembla que no s\'hi ha trobat cap coincidencia.</string>
     <string name="comença">Comença per…</string>
     <string name="conté">Conté…</string>
@@ -30,6 +29,7 @@
     <string name="hint_for_word">Mot a registrar</string>
     <string name="hint_for_tran">Traducció</string>
     <string name="hint_for_info">"Dades d'interés"</string>
+    <string name="hint_for_noinfo">"Renoi! No hi ha dades d'interés.\n Afegeix-ne una pàgina sempre que vulguis."</string>
     <string name="hint_for_equ_word">Mot a referir</string>
     <string name="hint_for_equ_tran">Traducció a referir</string>
     <string name="hint_for_equ_info">"Mot equivalent"</string>
@@ -59,13 +59,12 @@
     <string name="nom">Nom</string>
     <string name="adj">Adjectiu</string>
     <string name="inter">Interjecció</string>
-
-    <!--Paraules clau per a la descripció-->
-    <string name="divider">__divider__</string>
-    <string name="assigner">Pel que fa a:</string>
     <string name="no_sinonims">Sense sinonims</string>
-
     <string name="agrupar">Agrupar</string>
     <string name="sense_agrupar">Sense agrupar</string>
+
+    <!--Paraules clau per a la descripció-->
+    <string name="divider">"#new_page"</string>
+    <string name="assigner">Pel que fa a:</string>
 
 </resources>

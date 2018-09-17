@@ -127,16 +127,16 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
         ContentValues tuple = dbManager.getTuple(ItemWord.getText().toString(), ItemFon.getText().toString());
         ItemType.setText(tuple.getAsString(keys[0]));
 
-        //Defineix la quantitat d'Items que apunten al item corrent.
-        int countRefr = dbManager.getAllReferences(ItemWord.getText().toString(), ItemFon.getText().toString()).size();
-        RefrButton.setText(countRefr == 0? getString(R.string.no_sinonims) :
-                           "Té ".concat(String.valueOf(countRefr)).concat(" sinonims"));
-
         //Activa o no el botó Root en cas de que l'Item referencii a algun altre item.
         tuple = dbManager.getRoot(ItemWord.getText().toString(), ItemFon.getText().toString());
         RootButton.setVisibility(tuple.getAsString(keys[1]).equals(ItemWord.getText().toString()) &&
                                  tuple.getAsString(keys[2]).equals(ItemFon.getText().toString()) ?
                                  View.GONE : View.VISIBLE);
+
+        //Defineix la quantitat d'Items que apunten a l'arrel del item corrent (Doncs son sinonim).
+        int countRefr = dbManager.getAllReferences(tuple.getAsString(keys[1]), tuple.getAsString(keys[2])).size();
+        RefrButton.setText(countRefr == 0? getString(R.string.no_sinonims) :
+                "Té ".concat(String.valueOf(countRefr)).concat(" sinonims"));
 
         ItemFlag.setBackgroundColor(getIntent().getExtras().getInt("ThisFlag"));
     }

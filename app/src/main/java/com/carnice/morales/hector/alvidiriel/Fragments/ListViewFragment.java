@@ -85,14 +85,15 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(getContext(), ViewActivity.class);
-        intent.putExtra("ThisWord", listViewAdapter.getItem(i).getWord());
-        intent.putExtra("ThisTran", listViewAdapter.getItem(i).getTran());
-        intent.putExtra("ThisFlag", listViewAdapter.getItem(i).getFlag());
 
         DBManager dbManager = new DBManager(getContext());
         String[] keys = dbManager.getMainColumns();
-        ContentValues tupla = dbManager.getTuple(listViewAdapter.getItem(i).getWord(),
-                                                 listViewAdapter.getItem(i).getTran());
+        ContentValues tupla = dbManager.getRoot(listViewAdapter.getItem(i).getWord(),
+                                                listViewAdapter.getItem(i).getTran());
+
+        intent.putExtra("ThisWord", listViewAdapter.getItem(i).getWord());
+        intent.putExtra("ThisTran", listViewAdapter.getItem(i).getTran());
+        intent.putExtra("ThisFlag", listViewAdapter.getItem(i).getFlag());
         intent.putExtra("ThisInfo", tupla.getAsString(keys[3]));
 
         getContext().startActivity(intent);

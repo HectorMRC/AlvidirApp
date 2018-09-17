@@ -37,10 +37,6 @@
             android:textColor="@color/white"
             android:textAlignment="center"/>
 
-        <include android:id="@+id/onItem_noInfo"
-            layout="@layout/nothing_found"
-            android:visibility="visible"/>
-
     </LinearLayout>
 
 </ScrollView>

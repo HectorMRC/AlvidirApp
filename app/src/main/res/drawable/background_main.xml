@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="translucent">
+    <item android:drawable="@drawable/main_background" />
+    <item android:gravity="bottom|center" android:height="1920px" android:width="1080px">
+        <bitmap android:src="@drawable/draw_background" android:alpha="0.5"/>
+    </item>
+</layer-list>

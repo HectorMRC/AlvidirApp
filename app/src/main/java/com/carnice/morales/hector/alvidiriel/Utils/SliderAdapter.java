@@ -17,7 +17,7 @@ import com.carnice.morales.hector.alvidiriel.R;
 
 import java.util.ArrayList;
 
-public class SliderAdapter extends PagerAdapter implements View.OnClickListener {
+public class SliderAdapter extends PagerAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
@@ -29,7 +29,8 @@ public class SliderAdapter extends PagerAdapter implements View.OnClickListener 
 
         Content = new ArrayList<>();
         Content = new TextManager(context).slicer(content);
-        Content.add(""); //pàgina fantasma necessaria.
+        //Com a minim hi ha d'haver una pàgina per poder informar de la carencia d'informació.
+        if(Content.size() == 0) Content.add("");
     }
 
     @Override
@@ -47,20 +48,12 @@ public class SliderAdapter extends PagerAdapter implements View.OnClickListener 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slider_adapter, container, false);
 
-        LinearLayout layout = view.findViewById(R.id.onItem_noInfo);
         TextView title = view.findViewById(R.id.onItem_title);
         TextView  content = view.findViewById(R.id.onItem_content);
-        TextView lastPage = view.findViewById(R.id.warning);
-        Button AddPageButton = view.findViewById(R.id.afegir_from_empty);
-        AddPageButton.setOnClickListener(this);
 
-        layout.setVisibility(position == Content.size()-1? View.VISIBLE : View.GONE);
-        content.setVisibility(position == Content.size()-1? View.GONE : View.VISIBLE);
-
-        lastPage.setText(context.getString(Content.size() > 1? R.string.lastPag_warn : R.string.noInfo_warn));
-        title.setText(position == 0 && layout.getVisibility() == View.GONE?
-                      context.getString(R.string.hint_for_info) : "");
         content.setText(Content.get(position));
+        title.setText(Content.get(0).isEmpty()?
+                      context.getString(R.string.hint_for_noinfo) : context.getString(R.string.hint_for_info));
 
         container.addView(view);
         return view;
@@ -69,9 +62,5 @@ public class SliderAdapter extends PagerAdapter implements View.OnClickListener 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((ScrollView) object);
-    }
-
-    @Override
-    public void onClick(View v) {
     }
 }

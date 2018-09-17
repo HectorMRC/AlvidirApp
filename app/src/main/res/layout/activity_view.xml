@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:animateLayoutChanges="true"
-    android:background="@drawable/main_background"
+    android:background="@drawable/background_main"
     android:orientation="vertical"
     tools:context=".ViewActivity">
 
@@ -20,12 +20,44 @@
         android:layout_weight="1"
         android:id="@+id/onItem_ViewPager"/>
 
-    <LinearLayout android:id="@+id/onItem_dot"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:orientation="horizontal">
 
-        android:orientation="horizontal"
-        android:gravity="center"/>
+        <LinearLayout android:id="@+id/onItem_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+
+            android:orientation="horizontal"
+            android:gravity="center"/>
+
+        <Button android:id="@+id/onItem_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center"
+            android:gravity="center"
+
+            android:text="@string/enrere"
+            android:textColor="@color/nonOpaqueWhite"
+            android:textAllCaps="true"
+
+            android:background="@color/transparent"/>
+
+        <Button android:id="@+id/onItem_add"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center"
+            android:gravity="center"
+
+            android:text="@string/afegir"
+            android:textColor="@color/lightBlue"
+            android:textAllCaps="true"
+
+            android:background="@color/transparent"/>
+
+    </android.support.design.widget.CoordinatorLayout>
 
 </LinearLayout>
