@@ -55,6 +55,7 @@
             android:text="@string/afegir"
             android:textColor="@color/lightBlue"
             android:textAllCaps="true"
+            android:alpha="0.9"
 
             android:background="@color/transparent"/>
 

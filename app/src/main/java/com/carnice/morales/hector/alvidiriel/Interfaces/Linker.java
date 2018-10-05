@@ -5,5 +5,4 @@ public interface Linker<T,U> {
     void setRequiredData(T content, U requestCode);
 
     void setLinker(Linker linker, U requestCode);
-    void removeLinker(Linker linker, U requestCode);
 }

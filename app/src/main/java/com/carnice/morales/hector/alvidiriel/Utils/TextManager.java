@@ -1,6 +1,7 @@
 package com.carnice.morales.hector.alvidiriel.Utils;
 
 import android.content.Context;
+import android.content.res.Resources;
 
 import com.carnice.morales.hector.alvidiriel.R;
 
@@ -46,12 +47,29 @@ public class TextManager {
         return original;
     }
 
+    public String format(String original, boolean editable){
+        String toReplace = editable? "\u9210" : context.getString(R.string.divider);
+        String replacer = editable? context.getString(R.string.divider) : "\u9210";
+        return original.replaceAll(toReplace, replacer);
+    }
+
     public ArrayList<String> slicer(String content){
         ArrayList<String> slices = new ArrayList<>();
-        StringTokenizer tokenizer = new StringTokenizer(content, "~");
+        StringTokenizer tokenizer = new StringTokenizer(content, "\u9210");
 
         while(tokenizer.hasMoreTokens()) slices.add(tokenizer.nextToken());
 
         return slices;
+    }
+
+    private int parseInt(String string, int power){
+        if(string.isEmpty()) return 0;
+        int currentIndex = (string.charAt(string.length()-1) * 10^power);
+        return string.length() == 1?
+               currentIndex : parseInt(string.substring(0, string.length()-2), ++power) + currentIndex;
+    }
+
+    public int parseInt(String string){
+        return parseInt(string, 0);
     }
 }

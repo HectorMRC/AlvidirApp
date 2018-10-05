@@ -66,5 +66,6 @@
     <!--Paraules clau per a la descripció-->
     <string name="divider">"#new_page"</string>
     <string name="assigner">Pel que fa a:</string>
+    <string name="agrupa_per_tipus">Agrupa per tipus</string>
 
 </resources>

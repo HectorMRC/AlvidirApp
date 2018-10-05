@@ -12,9 +12,11 @@ public class ListViewHolder {
     TextView thisWord;
     TextView thisTran;
     TextView thisFont;
+    TextView thisType;
 
     LinearLayout background;
     LinearLayout thisFlag;
+    LinearLayout showType;
 
     LinearLayout frameLayout;
 }

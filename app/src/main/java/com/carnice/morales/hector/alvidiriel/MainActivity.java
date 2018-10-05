@@ -123,10 +123,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         if(menuItem.getItemId() != R.id.select_match) menuItem.setChecked(!menuItem.isChecked());
+
         else menuItem.setTitle(Objects.equals(menuItem.getTitle(), getText(R.string.comença))? R.string.conté :
                 Objects.equals(menuItem.getTitle(), getText(R.string.conté))? R.string.estricte : R.string.comença);
 
-        if(!ListSearch.getText().toString().isEmpty()){ //En cas de tenir ple el ListSearch:
+        if(!ListSearch.getText().toString().isEmpty()) {
             setWhereStatement();    //Actualització de la clausula where.
             refreshListView();      //Actualització de la listView segons el where.
             refreshCounter();       //Actualització de la compta d'elements trobats.
@@ -292,11 +293,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /*pre: cert*/
     /*post: s'han establert els valors del statement.*/
     private void setWhereStatement(){
-        String[] key = dbManager.getKey();
+        String[] key = dbManager.getMainColumns();
         statement.selection =
-                (FilterMenu.getMenu().findItem(R.id.select_català).isChecked()? key[0].concat(" LIKE ? ").concat(
+                (FilterMenu.getMenu().findItem(R.id.select_català).isChecked()? key[1].concat(" LIKE ? ").concat(
                  FilterMenu.getMenu().findItem(R.id.select_alvidir).isChecked()? " OR " : "") : "").concat(
-                 FilterMenu.getMenu().findItem(R.id.select_alvidir).isChecked()? key[1].concat(" LIKE ? ") : "");
+                 FilterMenu.getMenu().findItem(R.id.select_alvidir).isChecked()? key[2].concat(" LIKE ? ") : "");
 
         StringTokenizer tokenForInstances = new StringTokenizer(ListSearch.getText().toString(), ",");
         StringTokenizer tokenForArguments = new StringTokenizer(statement.selection, "?");

@@ -21,7 +21,7 @@ public class ListViewAdapter extends BaseAdapter implements Subject,
     private LayoutInflater inflater;
     private ArrayList<ListViewObject> AllItems;
     private Linker<String, String> Linked;
-    private boolean withFlag;
+    private boolean withFlag, showType;
 
     private static ArrayList<Observer> Observers;
     private static ListViewAdapter CurrentInstance;
@@ -122,11 +122,6 @@ public class ListViewAdapter extends BaseAdapter implements Subject,
     @Override
     public void setLinker(Linker linker, String requestCode) {
         this.Linked = linker;
-    }
-
-    @Override
-    public void removeLinker(Linker linker, String requestCode) {
-        if(this.Linked == linker) this.Linked = null;
     }
 
     private boolean show(ListViewHolder holder, Pair<String, String> item){

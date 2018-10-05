@@ -121,11 +121,6 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
 
     }
 
-    @Override
-    public void removeLinker(Linker linker, String requestCode) {
-
-    }
-
     public boolean onBackPressed(){
         if(listViewAdapter.getSelectedItem() == null) return false;
 
@@ -158,7 +153,7 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
     public void refresh(Context context, ArrayList<ContentValues> tuples, String[] key, boolean withFlag){
         ArrayList<ListViewObject> customArray = new ArrayList<>();
         for(ContentValues value: tuples) {
-            ListViewObject element = new ListViewObject(value.getAsString(key[0]), value.getAsString(key[1]), value.getAsInteger(key[2]));
+            ListViewObject element = new ListViewObject(value.getAsString(key[0]), value.getAsString(key[1]),  value.getAsInteger(key[2]));
             customArray.add(element);
         }
 

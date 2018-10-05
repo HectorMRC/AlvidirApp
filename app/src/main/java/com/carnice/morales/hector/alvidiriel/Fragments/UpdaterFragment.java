@@ -28,6 +28,7 @@ import com.carnice.morales.hector.alvidiriel.MainActivity;
 import com.carnice.morales.hector.alvidiriel.R;
 import com.carnice.morales.hector.alvidiriel.Utils.ListViewAdapter;
 import com.carnice.morales.hector.alvidiriel.Utils.DBManager;
+import com.carnice.morales.hector.alvidiriel.Utils.TextManager;
 import com.carnice.morales.hector.alvidiriel.Utils.Toaster;
 
 import java.util.ArrayList;
@@ -206,11 +207,6 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
 
     }
 
-    @Override
-    public void removeLinker(Linker linker, String requestCode) {
-
-    }
-
     //FUNCIONS INHERENTS AL FRAGMENT:
     public UpdaterFragment() {
         // Required empty public constructor
@@ -263,6 +259,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
                          tupla.get(0).getAsString(column[tupla.get(0).getAsInteger(column[4])]) :
                          "");
 
+        InfoText.setText(new TextManager().format(InfoText.getText().toString(), true)); //Transforma els caracters especials en l'etiqueta llegible
         Equival.setChecked(toRefer || tupla.get(0).getAsInteger(column[4]) > 0);
         EquWord.setChecked(tupla.get(0).getAsInteger(column[4]) == 1 && !toRefer);
         EquTran.setChecked(tupla.get(0).getAsInteger(column[4]) == 2 && !toRefer);
@@ -372,7 +369,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
                                     EquTran.isChecked()? InfoText.getText().toString() : TranText.getText().toString(),
                                     Equival.isChecked()? EquWord.isChecked()? WordText.getText().toString() :
                                             TranText.getText().toString() :
-                                            InfoText.getText().toString(),
+                                            new TextManager().format(InfoText.getText().toString(), false),
                                     Equival.isChecked()? EquWord.isChecked()? 1 : 2 : 0);
     }
 
@@ -384,7 +381,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
                                     EquTran.isChecked()? InfoText.getText().toString() : TranText.getText().toString(),
                                     Equival.isChecked()? EquWord.isChecked()? WordText.getText().toString() :
                                             TranText.getText().toString() :
-                                            InfoText.getText().toString(),
+                                            new TextManager().format(InfoText.getText().toString(), false),
                                     Equival.isChecked()? EquWord.isChecked()? 1 : 2 : 0);
     }
 

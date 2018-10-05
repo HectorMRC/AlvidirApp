@@ -4,6 +4,7 @@ public class Statements {
     public String selection;
     public String[][] args;
     public String sortBy;
+    public String groupBy;
 
     /*pre: cert*/
     /*post: el parametres selection i args[] passen a ser null*/

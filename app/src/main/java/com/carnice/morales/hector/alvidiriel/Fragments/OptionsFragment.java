@@ -116,11 +116,6 @@ public class OptionsFragment extends Fragment implements View.OnClickListener, L
     }
 
     @Override
-    public void removeLinker(Linker linker, String requestCode) {
-
-    }
-
-    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Toaster toaster = new Toaster(getContext());

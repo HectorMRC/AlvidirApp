@@ -1,6 +1,7 @@
 package com.carnice.morales.hector.alvidiriel;
 
 import android.content.ContentValues;
+import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,13 +13,15 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.carnice.morales.hector.alvidiriel.Interfaces.Observer;
 import com.carnice.morales.hector.alvidiriel.Utils.DBManager;
 import com.carnice.morales.hector.alvidiriel.Utils.SliderAdapter;
 import com.carnice.morales.hector.alvidiriel.Utils.TextManager;
 
 public class ViewActivity extends AppCompatActivity implements View.OnClickListener,
                                                                View.OnLongClickListener,
-                                                               ViewPager.OnPageChangeListener{
+                                                               ViewPager.OnPageChangeListener,
+                                                               Observer{
 
     //DECLARACIÓ D'OBJECTES:
     ImageButton TurnBack, ShowOptions;
@@ -77,6 +80,11 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void onActionListener(Pair<String, String> item, String action) {
 
     }
 

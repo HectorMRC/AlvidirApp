@@ -20,6 +20,13 @@ public class ColorsManager {
     }
 
     /*pre: cert*/
+    /*post: retorna un color predefinit segons l'string*/
+    public int getColor(String string){
+        string = string.substring(0, 3);
+        return getColor(new TextManager().parseInt(string));
+    }
+
+    /*pre: cert*/
     /*post: s'ha retornat el color situal a index-1.*/
     public int getColor(int index){
         return ColorsArray[(index-1)%ColorsArray.length];

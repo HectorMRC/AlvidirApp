@@ -13,11 +13,13 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.carnice.morales.hector.alvidiriel.Interfaces.Observer;
+import com.carnice.morales.hector.alvidiriel.Interfaces.Subject;
 import com.carnice.morales.hector.alvidiriel.R;
 
 import java.util.ArrayList;
 
-public class SliderAdapter extends PagerAdapter {
+public class SliderAdapter extends PagerAdapter implements Subject{
 
     private Context context;
     private LayoutInflater layoutInflater;
@@ -62,5 +64,15 @@ public class SliderAdapter extends PagerAdapter {
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((ScrollView) object);
+    }
+
+    @Override
+    public void setObserver(Observer observer) {
+
+    }
+
+    @Override
+    public void notifyObservers(String action) {
+
     }
 }
