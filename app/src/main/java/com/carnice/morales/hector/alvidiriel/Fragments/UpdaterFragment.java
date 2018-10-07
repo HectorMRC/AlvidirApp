@@ -2,6 +2,7 @@ package com.carnice.morales.hector.alvidiriel.Fragments;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,7 +10,10 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.widget.PopupMenu;
 import android.text.Editable;
+import android.text.Html;
+import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -161,6 +165,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
     }
 
     @Override
@@ -175,8 +180,12 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
         if(TranText.getText() == s)
             EquTran.setText(getText(R.string.equ_ind).toString().concat(s.toString()));
 
-        if(InfoText.getText() == s) for (int i = 0; i < s.length(); i++)
+        if(InfoText.getText() == s) for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '"') s = s.replace(i, i + 1, "\u0027");
+            if (s.charAt(i) == '#' && (i + 1 >= s.length() || s.charAt(i + 1) == ' ' || s.charAt(i + 1) == '\n'))
+                s = s.replace(i, i + 1, new TextManager().tag(getString(R.string.divider)));
+                //Autocompletador de # al tag: #new_page
+        }
 
         syncronizeForEquivalence();
     }
@@ -259,7 +268,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
                          tupla.get(0).getAsString(column[tupla.get(0).getAsInteger(column[4])]) :
                          "");
 
-        InfoText.setText(new TextManager().format(InfoText.getText().toString(), true)); //Transforma els caracters especials en l'etiqueta llegible
+        InfoText.setText(new TextManager(getContext()).format(InfoText.getText().toString(), true)); //Transforma els caracters especials en l'etiqueta llegible
         Equival.setChecked(toRefer || tupla.get(0).getAsInteger(column[4]) > 0);
         EquWord.setChecked(tupla.get(0).getAsInteger(column[4]) == 1 && !toRefer);
         EquTran.setChecked(tupla.get(0).getAsInteger(column[4]) == 2 && !toRefer);
@@ -369,7 +378,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
                                     EquTran.isChecked()? InfoText.getText().toString() : TranText.getText().toString(),
                                     Equival.isChecked()? EquWord.isChecked()? WordText.getText().toString() :
                                             TranText.getText().toString() :
-                                            new TextManager().format(InfoText.getText().toString(), false),
+                                            new TextManager(getContext()).format(InfoText.getText().toString(), false).toString(),
                                     Equival.isChecked()? EquWord.isChecked()? 1 : 2 : 0);
     }
 
@@ -381,7 +390,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
                                     EquTran.isChecked()? InfoText.getText().toString() : TranText.getText().toString(),
                                     Equival.isChecked()? EquWord.isChecked()? WordText.getText().toString() :
                                             TranText.getText().toString() :
-                                            new TextManager().format(InfoText.getText().toString(), false),
+                                            new TextManager().format(InfoText.getText().toString(), false).toString(),
                                     Equival.isChecked()? EquWord.isChecked()? 1 : 2 : 0);
     }
 

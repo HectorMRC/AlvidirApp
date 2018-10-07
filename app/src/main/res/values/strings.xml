@@ -64,7 +64,8 @@
     <string name="sense_agrupar">Sense agrupar</string>
 
     <!--Paraules clau per a la descripció-->
-    <string name="divider">"#new_page"</string>
+    <string name="divider">#new_page</string>
+    <string name="aligner">#align</string>
     <string name="assigner">Pel que fa a:</string>
     <string name="agrupa_per_tipus">Agrupa per tipus</string>
 

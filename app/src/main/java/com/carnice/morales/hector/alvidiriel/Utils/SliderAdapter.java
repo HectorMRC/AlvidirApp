@@ -32,7 +32,7 @@ public class SliderAdapter extends PagerAdapter implements Subject{
         Content = new ArrayList<>();
         Content = new TextManager(context).slicer(content);
         //Com a minim hi ha d'haver una pàgina per poder informar de la carencia d'informació.
-        if(Content.size() == 0) Content.add("");
+        if(Content.isEmpty()) Content.add("");
     }
 
     @Override
@@ -42,7 +42,7 @@ public class SliderAdapter extends PagerAdapter implements Subject{
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == (ScrollView) object;
+        return view == object;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class SliderAdapter extends PagerAdapter implements Subject{
         TextView title = view.findViewById(R.id.onItem_title);
         TextView  content = view.findViewById(R.id.onItem_content);
 
-        content.setText(Content.get(position));
+        content.setText(new TextManager().clearUselessChars(Content.get(position), " \n"));
         title.setText(Content.get(0).isEmpty()?
                       context.getString(R.string.hint_for_noinfo) : context.getString(R.string.hint_for_info));
 
