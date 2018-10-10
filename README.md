@@ -1,5 +1,5 @@
 # Alvidir
-Android app of a dictionary between languages.
+Android app about languages dictionary.
 
 # Purpose
 That's a very simple dictionary that i build as tool to remember and keep information between Catalan (my mother tongue) and Alvidir (a fictional language that i made for a long time fantasy project).
