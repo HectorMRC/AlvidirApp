@@ -89,22 +89,28 @@ public class TextManager {
         ArrayList<String> slices = new ArrayList<>();
         StringTokenizer tokenizer = new StringTokenizer(content, symbol);
 
-        while(tokenizer.hasMoreTokens()) slices.add(tokenizer.nextToken());
+        while(tokenizer.hasMoreTokens())
+            slices.add(clean(tokenizer.nextToken()));
+
         return slices;
     }
 
     /*Elimina els caracters presents a chars que es troben a l'inici i
     * final d'original.*/
-    public String clearUselessChars(String original, String chars){
+    private String clearUselessChars(String original, String chars){
         if(original.isEmpty()) return original;
         //Per als caracters inicials:
         if(chars.contains(String.valueOf(original.charAt(0))))
             original = clearUselessChars(original.substring(1), chars);
         //Per als caracters finals:
         else if(chars.contains(String.valueOf(original.charAt(original.length()-1))))
-            original = clearUselessChars(original.substring(0, original.length()-2), chars);
+            original = clearUselessChars(original.substring(0, original.length()-1), chars);
 
         return original;
+    }
+
+    public String clean(String original){
+        return clearUselessChars(original, " \n");
     }
 
     /*Retorna un valor o altre segons el text introduit.

@@ -6,6 +6,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,11 +24,12 @@ import com.carnice.morales.hector.alvidiriel.Utils.TextManager;
 public class ViewActivity extends AppCompatActivity implements View.OnClickListener,
                                                                View.OnLongClickListener,
                                                                ViewPager.OnPageChangeListener,
+                                                               PopupMenu.OnMenuItemClickListener,
                                                                Observer{
 
     //DECLARACIÓ D'OBJECTES:
     ImageButton TurnBack, ShowOptions;
-    Button RefrButton, RootButton;
+    Button RefrButton, RootButton, BackPageButton;
 
     TextView ItemType, ItemWord, ItemTran, ItemFon;
     LinearLayout ItemFlag;
@@ -54,6 +58,13 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
                 super.onBackPressed();
                 break;
 
+            case R.id.onItem_backpage:
+                SlideViewPager.setCurrentItem(0, true);
+                break;
+
+            case R.id.onItem_options:
+                showOptionsMenu(v);
+
             default: break;
         }
     }
@@ -70,7 +81,6 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
     }
 
     @Override
@@ -80,7 +90,11 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onPageScrollStateChanged(int state) {
+    }
 
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        return true;
     }
 
     @Override
@@ -101,6 +115,8 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
         RefrButton.setOnClickListener(this);
         RootButton = findViewById(R.id.onItem_root);
         RootButton.setOnClickListener(this);
+        BackPageButton = findViewById(R.id.onItem_backpage);
+        BackPageButton.setOnClickListener(this);
 
         ItemType = findViewById(R.id.onItem_type);
         ItemWord = findViewById(R.id.onItem_word);
@@ -147,6 +163,20 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
                 "Té ".concat(String.valueOf(countRefr)).concat(" sinonims"));
 
         ItemFlag.setBackgroundColor(getIntent().getExtras().getInt("ThisFlag"));
+    }
+
+    /*pre: cert*/
+    /*post: s'ha obert el menu d'opcions.*/
+    public void showOptionsMenu(View view){
+        if(OptionsMenu == null) {
+            OptionsMenu = new PopupMenu(this, view);
+            OptionsMenu.setOnMenuItemClickListener(this);
+
+            MenuInflater inflater = OptionsMenu.getMenuInflater();
+            inflater.inflate(R.menu.onitem_menu, OptionsMenu.getMenu());
+        }
+
+        OptionsMenu.show();
     }
 
     /*pre: cert*/

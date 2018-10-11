@@ -53,9 +53,14 @@ public class SliderAdapter extends PagerAdapter implements Subject{
         TextView title = view.findViewById(R.id.onItem_title);
         TextView  content = view.findViewById(R.id.onItem_content);
 
-        content.setText(new TextManager().clearUselessChars(Content.get(position), " \n"));
-        title.setText(Content.get(0).isEmpty()?
-                      context.getString(R.string.hint_for_noinfo) : context.getString(R.string.hint_for_info));
+        if(Content.get(position).isEmpty()) title.setText(context.getString(R.string.hint_for_noinfo));
+        //En cas de tenir un titol definit per @ al inici de pàgina:
+        else if(Content.get(position).charAt(0) == '@' && Content.get(position).length() > 1){
+            title.setText(Content.get(position).substring(1, Content.get(position).indexOf('\n', 0) > 0?
+                          Content.get(position).indexOf('\n', 0) : Content.get(position).length()));
+            content.setText(new TextManager().clean(Content.get(position).substring(title.getText().length()+1)));
+        }
+        else content.setText(Content.get(position));
 
         container.addView(view);
         return view;

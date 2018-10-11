@@ -45,6 +45,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
     //DECLARACIÓ D'OBJECTES:
     private Subject Subject;
     private Linker<Pair<String, String>, String> ItemSelectedGiver;
+    private boolean erasing = false; //Indica si s'està esborrant o no l'InfoText
 
     Button Afegir, Ignorar, Arrel;
     ImageButton SwapContent, CategoryExpand;
@@ -165,7 +166,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+        erasing = count < after;
     }
 
     @Override
@@ -180,12 +181,29 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
         if(TranText.getText() == s)
             EquTran.setText(getText(R.string.equ_ind).toString().concat(s.toString()));
 
-        if(InfoText.getText() == s) for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '"') s = s.replace(i, i + 1, "\u0027");
-            if (s.charAt(i) == '#' && (i + 1 >= s.length() || s.charAt(i + 1) == ' ' || s.charAt(i + 1) == '\n'))
-                s = s.replace(i, i + 1, new TextManager().tag(getString(R.string.divider)));
-                //Autocompletador de # al tag: #new_page
-        }
+        boolean inTitle = false;
+        if(InfoText.getText() == s) for (int i = 0; i < s.length(); i++) switch (s.charAt(i)) {
+                case '"':
+                    s = s.replace(i, i + 1, "\u0027");
+                    break;
+
+                case '#':  //Autocompletador de # al tag: #new_page
+                    if (!inTitle && erasing) //Controla estats del text alïens al tag
+                        if (i + 1 == s.length() || s.charAt(i + 1) != getString(R.string.divider).charAt(1))
+                            s = s.replace(i, i + 1, new TextManager().tag(getString(R.string.divider)));
+                    break;
+
+                case '@':
+                    inTitle = true;
+                    break;
+
+                case '\n':
+                    inTitle = false;
+                    break;
+
+                default:
+                    break;
+            }
 
         syncronizeForEquivalence();
     }

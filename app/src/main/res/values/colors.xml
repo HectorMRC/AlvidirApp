@@ -22,6 +22,7 @@
     <!--SEMIS-->
     <color name="transparent">#00000000</color>
     <color name="softWhite">#EEFFFFFF</color>
+    <color name="softWhiteX2">#AAFFFFFF</color>
     <color name="nonOpaqueWhite">#66FFFFFF</color>
     <color name="transpWhite">#09FFFFFF</color>
 
