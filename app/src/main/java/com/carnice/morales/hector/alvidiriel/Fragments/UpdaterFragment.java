@@ -36,6 +36,7 @@ import com.carnice.morales.hector.alvidiriel.Utils.TextManager;
 import com.carnice.morales.hector.alvidiriel.Utils.Toaster;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class UpdaterFragment extends Fragment implements View.OnClickListener,
                                                          PopupMenu.OnMenuItemClickListener,
@@ -456,8 +457,9 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
             Categories.setText(tupla.get(0).getAsString(column[0]));
 
             setCommitButtonColor(returnRequiredData(null) != null &&
-                                 (returnRequiredData(null).first.equals(WordText.getText().toString())) &&
-                                  returnRequiredData(null).second.equals(TranText.getText().toString()));
+                                (returnRequiredData(null).first.equals(WordText.getText().toString()) &&
+                                 returnRequiredData(null).second.equals(TranText.getText().toString()) ||
+                                 dbManager.checkWay(returnRequiredData(null), new Pair<>(WordText.getText().toString(), TranText.getText().toString()))));
 
         }
         else if(Equival.isChecked()) Categories.setText(R.string.tipus);

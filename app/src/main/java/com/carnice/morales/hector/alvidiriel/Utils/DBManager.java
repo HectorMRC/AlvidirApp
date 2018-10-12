@@ -5,10 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.util.Pair;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class DBManager extends DBCoordinator{
 
@@ -55,7 +58,8 @@ public class DBManager extends DBCoordinator{
         String[] args = new String[]{newWord, newTran};
 
         ContentValues root = getAllTuples(where, args, null, null, null, 0).get(0);
-        ArrayList<ContentValues> refers = getAllReferences(oldWord, oldTran);
+        HashSet<ContentValues> refers = new HashSet<>();
+        getAllReferences(oldWord, oldTran, refers);
         for(ContentValues values: refers)
             updateItem(values.getAsString(columns[1]),
                        values.getAsString(columns[2]),
@@ -220,7 +224,7 @@ public class DBManager extends DBCoordinator{
 
     /*pre: la definició composta per word i tran existeix a la base de dades.*/
     /*post: s'han retornat totes les referencies a la definició {word, tran}*/
-    public ArrayList<ContentValues> getAllReferences(String word, String tran){
+    public void getAllReferences(String word, String tran, HashSet<ContentValues> refr){
         String[] columns = getMainColumns();
         String where = "( ".concat(columns[4])
                            .concat(" = 1 AND ")
@@ -232,7 +236,13 @@ public class DBManager extends DBCoordinator{
                            .concat(columns[3]).concat(" = ? ) ");
 
         String[] args = new String[]{tran, word, word, tran};
-        return getAllTuples(where, args, null, null, null, 0);
+
+        ArrayList<ContentValues> thisRefr = getAllTuples(where, args, null, null, null, 0);
+        refr.addAll(thisRefr); //Copia de les referencies trobades al set
+
+        String[] key = getKey(); //claus per obtenir l'element desitjat dins el ContentValues
+        for(ContentValues it: thisRefr)
+            getAllReferences(it.getAsString(key[0]), it.getAsString(key[1]), refr);
     }
 
     /*pre: la definició composta per word i tran existeix a la base de dades.*/
@@ -305,6 +315,21 @@ public class DBManager extends DBCoordinator{
     /*post: s'ha retornat el nom de la única columna de la taula sync*/
     public String getSyncColumns(){
         return MainDBContract.FeedEntry.COLUMN_LAST_SYNC;
+    }
+
+    /*pre: la definició composta per Origin existeix a la base de dades.*/
+    /*post: s'ha retornat cert si, i només si, existeix una conectivitat via refrencies
+    *       entre Origin (com arrel) i Destination (com a referencia).*/
+    public boolean checkWay(Pair<String, String> Origin, Pair<String, String> Destination){
+        HashSet<ContentValues> References = new HashSet<>();
+        getAllReferences(Origin.first, Origin.second, References);
+        String key[] = getKey();
+
+        for(ContentValues current: References)
+            if(new Pair<>(current.getAsString(key[0]), current.getAsString(key[1])).equals(Destination))
+                return true;
+
+        return false;
     }
 
 }

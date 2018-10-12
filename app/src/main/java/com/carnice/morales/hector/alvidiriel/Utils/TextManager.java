@@ -67,7 +67,7 @@ public class TextManager {
     * o viceversa.*/
     public Editable format(String original, boolean editable){
         if(original.isEmpty()) return new SpannableStringBuilder(original);
-        String toReplace = editable? symbol : context.getString(R.string.divider);
+        String toReplace = editable? symbol : context.getResources().getString(R.string.divider);
         String replacer = editable? context.getResources().getString(R.string.divider) : symbol;
 
         /*Transformació de l'etiqueta, al simbol especial corresponent: */

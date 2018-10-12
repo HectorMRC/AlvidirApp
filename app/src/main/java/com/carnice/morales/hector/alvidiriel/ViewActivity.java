@@ -21,6 +21,8 @@ import com.carnice.morales.hector.alvidiriel.Utils.DBManager;
 import com.carnice.morales.hector.alvidiriel.Utils.SliderAdapter;
 import com.carnice.morales.hector.alvidiriel.Utils.TextManager;
 
+import java.util.HashSet;
+
 public class ViewActivity extends AppCompatActivity implements View.OnClickListener,
                                                                View.OnLongClickListener,
                                                                ViewPager.OnPageChangeListener,
@@ -28,6 +30,8 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
                                                                Observer{
 
     //DECLARACIÓ D'OBJECTES:
+    private HashSet<ContentValues> References;
+
     ImageButton TurnBack, ShowOptions;
     Button RefrButton, RootButton, BackPageButton;
 
@@ -106,6 +110,8 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
     /*pre: cert*/
     /*post: s'han inicialitzat tots els objectes de l'activity.*/
     private void iniAllObjects(){
+        References = new HashSet<>();
+
         TurnBack = findViewById(R.id.onItem_back);
         TurnBack.setOnClickListener(this);
         ShowOptions = findViewById(R.id.onItem_options);
@@ -158,9 +164,9 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
                                  View.GONE : View.VISIBLE);
 
         //Defineix la quantitat d'Items que apunten a l'arrel del item corrent (Doncs son sinonim).
-        int countRefr = dbManager.getAllReferences(tuple.getAsString(keys[1]), tuple.getAsString(keys[2])).size();
-        RefrButton.setText(countRefr == 0? getString(R.string.no_sinonims) :
-                "Té ".concat(String.valueOf(countRefr)).concat(" sinonims"));
+        dbManager.getAllReferences(tuple.getAsString(keys[1]), tuple.getAsString(keys[2]), References);
+        RefrButton.setText(References.size() == 0? getString(R.string.no_sinonims) :
+                "Té ".concat(String.valueOf(References.size())).concat(" sinonims"));
 
         ItemFlag.setBackgroundColor(getIntent().getExtras().getInt("ThisFlag"));
     }
