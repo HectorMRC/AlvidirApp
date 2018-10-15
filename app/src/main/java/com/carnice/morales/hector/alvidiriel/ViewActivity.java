@@ -22,6 +22,7 @@ import com.carnice.morales.hector.alvidiriel.Utils.SliderAdapter;
 import com.carnice.morales.hector.alvidiriel.Utils.TextManager;
 
 import java.util.HashSet;
+import java.util.function.Predicate;
 
 public class ViewActivity extends AppCompatActivity implements View.OnClickListener,
                                                                View.OnLongClickListener,
@@ -53,6 +54,11 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_view);
 
         iniAllObjects();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @Override

@@ -23,6 +23,7 @@ import com.carnice.morales.hector.alvidiriel.Utils.ListViewObject;
 import com.carnice.morales.hector.alvidiriel.ViewActivity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ListViewFragment extends ListFragment implements AdapterView.OnItemClickListener,
                                                               AdapterView.OnItemLongClickListener,

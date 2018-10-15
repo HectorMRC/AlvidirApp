@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.util.Pair;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Statements statement;
 
     //Control de tasques corrent:
-    public static SwipeRefreshLayout Refresher;
+    static public SwipeRefreshLayout Refresher;
 
     ListViewFragment listViewFragment;
     UpdaterFragment updaterFragment;
