@@ -255,7 +255,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
     }
 
     /*pre: cert*/
-    /*post: si el booleà urge és cert, l'Item selected s'ha fet null. Altrament és conserva.*/
+    /*post: si el booleà purge és cert, l'Item selected s'ha fet null. Altrament és conserva.*/
     private void purgeItemSelected(boolean purge){
         if(purge) ItemSelectedGiver.setRequiredData(null, null);
     }
@@ -409,7 +409,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
                                     EquTran.isChecked()? InfoText.getText().toString() : TranText.getText().toString(),
                                     Equival.isChecked()? EquWord.isChecked()? WordText.getText().toString() :
                                             TranText.getText().toString() :
-                                            new TextManager().format(InfoText.getText().toString(), false).toString(),
+                                            new TextManager(getContext()).format(InfoText.getText().toString(), false).toString(),
                                     Equival.isChecked()? EquWord.isChecked()? 1 : 2 : 0);
     }
 

@@ -1,10 +1,12 @@
 package com.carnice.morales.hector.alvidiriel;
 
+import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onPostResume() {
         super.onPostResume();
         this.onRefresh();
+        checkActivityState();
     }
 
     @Override
@@ -183,7 +186,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void iniAllObjects(){
         dbManager = new DBManager(this);
         statement = new Statements();
-        //BusyTask = new HashSet<>();
 
         FrameLayout = findViewById(R.id.frame_layout);
         NothingFound = findViewById(R.id.nothing_found);
@@ -327,6 +329,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         new NetworkManager().getStatus(this));
     }
 
+    /*pre: cert*/
+    /*post: comprova l'estat d'alguns components de l'activity i els reestableix
+    * segons calgui.*/
+    private void checkActivityState() {
+        if(FrameLayout.getVisibility() != View.GONE) AddNewItem.hide();
+    }
+
     //FUNCIONS AUXILIARS:
     /*pre: cert*/
     /*post: s'ha retornat true, si i només si, el frame layout és visible; altrament false.*/
@@ -339,10 +348,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void swapFrameLayoutVisibility(boolean updater){
         setFrameLayoutContent(updater);
         FrameLayout.startAnimation(AnimationUtils.loadAnimation(this,
-                FrameLayout.getVisibility() == View.GONE? R.anim.updater_open : R.anim.updater_close));
-        FrameLayout.setVisibility(FrameLayout.getVisibility() == View.GONE? View.VISIBLE : View.GONE);
+                                   !isFrameLayoutVisible()? R.anim.updater_open : R.anim.updater_close));
+        FrameLayout.setVisibility(!isFrameLayoutVisible()? View.VISIBLE : View.GONE);
 
-        setAddButtonVisibility(0, FrameLayout.getVisibility() == View.VISIBLE? 1 : -1);
+        setAddButtonVisibility(0, isFrameLayoutVisible()? 1 : -1);
         if(NothingFound.getVisibility() == View.VISIBLE && !ListSearch.getText().toString().isEmpty())
             updaterFragment.setWordText(ListSearch.getText().toString());
     }
