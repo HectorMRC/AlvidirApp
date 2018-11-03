@@ -1,5 +1,6 @@
 package com.carnice.morales.hector.alvidiriel;
 
+import android.animation.Animator;
 import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.util.Pair;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +21,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -214,8 +217,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ListSearch.addTextChangedListener(this);
 
         iniListViewFragment();
+        /*Inicialitza el FrameLayout amb el contingut del Afegidor
+        * per a una major velocitat a l'hora d'obrir-lo.*/
         setFrameLayoutContent(true);
 
+        /*Inicialitza el filtre de cerca ja que a l'hora de fer
+        * qualsevol tipus de cerca cal saber-ne el seu estat.*/
         showFilterMenu(FilterButton);
         sortListView(findViewById(R.id.sort_first));
     }
@@ -237,18 +244,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /*post: s'ha retornat true si la View solicitada ja està montada; altrament retorna false
     *       i en monta la vista.*/
     private boolean alreadyCreatedFrameView(boolean updater){
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        updaterFragment = (UpdaterFragment) fm.findFragmentByTag("fragment_updater");
-        optionsFragment = (OptionsFragment) fm.findFragmentByTag("fragment_options");
+        android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
+        updaterFragment = (UpdaterFragment) manager.findFragmentByTag("fragment_updater");
+        optionsFragment = (OptionsFragment) manager.findFragmentByTag("fragment_options");
 
         if(updater? updaterFragment == null : optionsFragment == null){
-            FrameLayout.removeAllViews(); //Neteja la vista corrent
-            android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
+            FragmentTransaction transaction = manager.beginTransaction();
+
             if(updater) updaterFragment = new UpdaterFragment();
             else optionsFragment = new OptionsFragment();
-            ft.add(R.id.frame_layout, updater? updaterFragment : optionsFragment,
-                    updater? "fragment_updater" : "fragment_options");
-            ft.commit();
+
+            transaction.replace(R.id.frame_layout, updater? updaterFragment : optionsFragment,
+                                updater? "fragment_updater" : "fragment_options");
+
+            transaction.commit();
             return false;
         }
 
@@ -269,6 +278,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FrameLayout.removeAllViews();
                 FrameLayout.addView(optionsFragment.getView());
             }
+        }
+    }
+
+    /*pre: l'element a destruir ha d'estar inicialitzat*/
+    /*post: buida el frame layout. */
+    private void destroyFrameContent(boolean forUpdate){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if((forUpdate && optionsFragment != null) || (!forUpdate && updaterFragment != null)){
+            transaction.remove(forUpdate? optionsFragment : updaterFragment);
+            transaction.commit();
+
+            if(forUpdate) optionsFragment = null;
+            else updaterFragment = null;
         }
     }
 
@@ -347,13 +369,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /*post: s'han materialitzat el fragment d'agregació.*/
     public void swapFrameLayoutVisibility(boolean updater){
         setFrameLayoutContent(updater);
-        FrameLayout.startAnimation(AnimationUtils.loadAnimation(this,
-                                   !isFrameLayoutVisible()? R.anim.updater_open : R.anim.updater_close));
-        FrameLayout.setVisibility(!isFrameLayoutVisible()? View.VISIBLE : View.GONE);
+        setAnimation();
 
+        FrameLayout.setVisibility(!isFrameLayoutVisible()? View.VISIBLE : View.GONE);
         setAddButtonVisibility(0, isFrameLayoutVisible()? 1 : -1);
+
         if(NothingFound.getVisibility() == View.VISIBLE && !ListSearch.getText().toString().isEmpty())
             updaterFragment.setWordText(ListSearch.getText().toString());
+    }
+
+    /*pre: cert*/
+    /*post: s'ha inicialitzar l'animació d'obertura si el frameLayout no es visible,
+    *       altrament s'ha s'ha configurat la de tancament.*/
+    public void setAnimation(){
+        int coord_x = (AddNewItem.getRight()+AddNewItem.getLeft())/2;
+        int coord_y = (AddNewItem.getBottom()+AddNewItem.getTop())/2;
+        int radius = (int) Math.hypot(1080, 1920);
+
+        int start = isFrameLayoutVisible()? 1080 : 0;
+        int end = isFrameLayoutVisible()? 0 : radius;
+
+        Animator animator = ViewAnimationUtils.createCircularReveal(FrameLayout, coord_x, coord_y, start, end);
+        animator.setDuration(600); //Per a que l'animació sigui apreciable
+        animator.start();
     }
 
     /*pre: cert*/
