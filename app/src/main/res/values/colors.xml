@@ -8,6 +8,7 @@
     <!--SOLIDS-->
     <color name="black">#000000</color>
     <color name="softBlack">#99000000</color>
+    <color name="softGrey">#55000000</color>
 
     <color name="white">#FFFFFF</color>
     <color name="darkGray">#FF333333</color>
