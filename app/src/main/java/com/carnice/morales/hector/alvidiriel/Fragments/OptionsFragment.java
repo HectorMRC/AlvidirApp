@@ -130,7 +130,7 @@ public class OptionsFragment extends Fragment implements View.OnClickListener, L
             toaster.standardToast(getString(R.string.reboke_action));
         }
 
-        toaster.standardToast(getString(R.string.commit_advanced));
+        toaster.customizedToast(getLayoutInflater(), getView(), getString(R.string.commit_advanced), null);
     }
 
     public boolean onBackPressed(){

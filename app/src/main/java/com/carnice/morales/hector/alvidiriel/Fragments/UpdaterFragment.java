@@ -423,7 +423,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
 
             ((MainActivity) getActivity()).swapFrameLayoutVisibility(true);
             ((MainActivity) getActivity()).refreshListView();
-            toaster.standardToast(getText(R.string.commit_insert).toString());
+            toaster.customizedToast(getLayoutInflater(), getView(), getText(R.string.commit_insert).toString(), null);
             reset(true);
         }
 

@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         iniAllObjects();
     }
 
+
     @Override
     protected void onPostResume() {
         super.onPostResume();
