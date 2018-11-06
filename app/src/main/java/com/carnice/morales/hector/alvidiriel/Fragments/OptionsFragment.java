@@ -127,10 +127,10 @@ public class OptionsFragment extends Fragment implements View.OnClickListener, L
 
         } catch (IOException e){
             Log.i("FILES MANAGER IOException", e.toString());
-            toaster.standardToast(getString(R.string.reboke_action));
+            toaster.customizedToast(getLayoutInflater(), getView(), getString(R.string.reboke_action), getContext().getDrawable(R.drawable.ic_error_vector));
         }
 
-        toaster.customizedToast(getLayoutInflater(), getView(), getString(R.string.commit_advanced), null);
+        toaster.customizedToast(getLayoutInflater(), getView(), getString(R.string.commit_advanced), getContext().getDrawable(R.drawable.ic_storage_vector));
     }
 
     public boolean onBackPressed(){
@@ -158,7 +158,7 @@ public class OptionsFragment extends Fragment implements View.OnClickListener, L
     private void rigthButtonPressed(){
         Toaster toaster = new Toaster(getContext());
         DBManager dbManager = new DBManager(getContext());
-        if(!dbManager.clearContent()) toaster.standardToast(getString(R.string.reboke_action));
+        if(!dbManager.clearContent()) toaster.customizedToast(getLayoutInflater(), getView(), getString(R.string.reboke_action), getContext().getDrawable(R.drawable.ic_error_vector));
         else ((MainActivity) getActivity()).onRefresh();
     }
 

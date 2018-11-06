@@ -38,7 +38,6 @@ public class Toaster extends Toast{
 
     /*pre: cert*/
     /*post: s'ha llençat un toast personalitzat amb la imatge image i el missatge message*/
-    @SuppressLint("WrongConstant")
     public void customizedToast(LayoutInflater inflater, View view, String message, Drawable image){
         if(currentToast != null) currentToast.cancel();
         custom = (LinearLayout) inflater.inflate(R.layout.customized_toast, (ViewGroup) view.findViewById(R.id.toastHolder));
