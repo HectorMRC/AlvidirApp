@@ -48,6 +48,7 @@
     <string name="err_equ_not_match">Compte! La definició que pretens referenciar és inaccessible.</string>
     <string name="item_select_title">Modificar el contingut?</string>
     <string name="item_select_subtitle">Recorda que qualsevol canvi serà irreversible.</string>
+    <string name="item_delete">Segur que vols esborrar aquesta definició?</string>
 
     <string name="det">Determinant</string>
     <string name="dec">Declinació</string>

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -20,6 +21,7 @@ import com.carnice.morales.hector.alvidiriel.Interfaces.Observer;
 import com.carnice.morales.hector.alvidiriel.Utils.DBManager;
 import com.carnice.morales.hector.alvidiriel.Utils.SliderAdapter;
 import com.carnice.morales.hector.alvidiriel.Utils.TextManager;
+import com.carnice.morales.hector.alvidiriel.Utils.Toaster;
 
 import java.util.HashSet;
 import java.util.function.Predicate;
@@ -104,7 +106,11 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        return true;
+        if(item.getItemId() == R.id.action_delete){
+            //Confirma l'acció
+        }
+
+        return false;
     }
 
     @Override
