@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /*pre: cert*/
     /*post: s'ha inicialitzat la instancia del UpdaterFragment si, i només si, updater és true;
-     *      altrament s'ha inicialitzat la de OptionsFragment.*/
+     *      altrament s'ha inicialitzat la de OptionsView.*/
     private void setFrameLayoutContent(boolean updater){
         if(alreadyCreatedFrameView(updater)){
             updaterFragment.reset(false);

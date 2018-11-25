@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.carnice.morales.hector.alvidiriel.Interfaces.Linker;
 import com.carnice.morales.hector.alvidiriel.MainActivity;
@@ -29,7 +30,9 @@ public class OptionsFragment extends Fragment implements View.OnClickListener, L
     //DECLARACIÓ D'OBJECTES:
     Button LeftButton, CenterButton, RigthButton;
     LinearLayout LeftSeparator, RigthSeparator;
-    LinearLayout Background;
+    LinearLayout Background, Container;
+
+    TextView Title, SubTitle;
 
     private Linker<String, String> Getter;
     boolean RigthButtonSelected = false;
@@ -63,6 +66,9 @@ public class OptionsFragment extends Fragment implements View.OnClickListener, L
         CenterButton.setText(getActivity() == null? R.string.editar : R.string.salva);
         Background.setBackgroundColor(getActivity() == null? 0x00000000 : 0x99000000);
 
+        Title = getView().findViewById(R.id.options_title);
+        SubTitle = getView().findViewById(R.id.adv_subtitle);
+        Container = getView().findViewById(R.id.options_buttons);
 
         LeftSeparator = getView().findViewById(R.id.left_separator);
         RigthSeparator = getView().findViewById(R.id.rigth_separator);
@@ -225,5 +231,28 @@ public class OptionsFragment extends Fragment implements View.OnClickListener, L
     /*post: s'ha canviat l'estat del botó d'eliminació.*/
     public void setRigthButtonSelected(Boolean selected) {
         if(RigthButtonSelected != selected) rigthButtonControler();
+    }
+
+    /*pre: cert*/
+    /*post: inverteix l'estat visible del fragment.*/
+    public void swapVisibility(){
+        Background.setVisibility(Background.getVisibility() == View.GONE? View.VISIBLE : View.GONE);
+    }
+
+    /*pre: cert*/
+    /*post: assigna els colors adients per a un fos clar.*/
+    public void iniDarkMode(){
+        Background.setBackgroundColor(getContext().getColor(R.color.transparent));
+        Title.setTextColor(getContext().getColor(R.color.softBlack));
+        SubTitle.setTextColor(getContext().getColor(R.color.softBlack));
+
+        LeftButton.setTextColor(getContext().getColor(R.color.softBlack));
+        CenterButton.setTextColor(getContext().getColor(R.color.softBlack));
+        RigthButton.setTextColor(getContext().getColor(R.color.softBlack));
+
+        LeftSeparator.setBackgroundColor(getContext().getColor(R.color.softBlack));
+        RigthSeparator.setBackgroundColor(getContext().getColor(R.color.softBlack));
+
+        Container.setBackground(getContext().getDrawable(R.drawable.rounded_button_black));
     }
 }

@@ -1,30 +1,28 @@
 package com.carnice.morales.hector.alvidiriel;
 
 import android.content.ContentValues;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.carnice.morales.hector.alvidiriel.Fragments.OptionsFragment;
 import com.carnice.morales.hector.alvidiriel.Interfaces.Observer;
 import com.carnice.morales.hector.alvidiriel.Utils.DBManager;
 import com.carnice.morales.hector.alvidiriel.Utils.SliderAdapter;
 import com.carnice.morales.hector.alvidiriel.Utils.TextManager;
-import com.carnice.morales.hector.alvidiriel.Utils.Toaster;
 
 import java.util.HashSet;
-import java.util.function.Predicate;
 
 public class ViewActivity extends AppCompatActivity implements View.OnClickListener,
                                                                View.OnLongClickListener,
@@ -40,8 +38,6 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
 
     TextView ItemType, ItemWord, ItemTran, ItemFon;
     LinearLayout ItemFlag;
-
-    PopupMenu OptionsMenu;
 
     LinearLayout DotLayout;
     TextView[] Dots;
@@ -75,7 +71,7 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.onItem_options:
-                showOptionsMenu(v);
+                //showOptionsMenu();
 
             default: break;
         }
@@ -140,7 +136,6 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
         ItemWord = findViewById(R.id.onItem_word);
         ItemTran = findViewById(R.id.onItem_tran);
         ItemFon = findViewById(R.id.onItem_fon);
-
         ItemFlag = findViewById(R.id.onItem_flag);
 
         //iniRecyclerViewFragment();
@@ -184,20 +179,6 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /*pre: cert*/
-    /*post: s'ha obert el menu d'opcions.*/
-    public void showOptionsMenu(View view){
-        if(OptionsMenu == null) {
-            OptionsMenu = new PopupMenu(this, view);
-            OptionsMenu.setOnMenuItemClickListener(this);
-
-            MenuInflater inflater = OptionsMenu.getMenuInflater();
-            inflater.inflate(R.menu.onitem_menu, OptionsMenu.getMenu());
-        }
-
-        OptionsMenu.show();
-    }
-
-    /*pre: cert*/
     /*post: s'han generat tants punts com pagines d'info hi hagi.*/
     public void addDotIndicator(int position){
         Dots = new TextView[sliderAdapter.getCount()];
@@ -214,4 +195,5 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
             DotLayout.addView(Dots[i]);
         }
     }
+
 }

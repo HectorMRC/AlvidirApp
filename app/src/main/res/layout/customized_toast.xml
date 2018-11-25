@@ -25,7 +25,6 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
 
-            android:alpha="0.6"
             android:src="@drawable/ic_added_vector"
             android:scaleType="fitCenter"/>
 
@@ -33,10 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:alpha="0.6"
             android:text="@string/commit_insert"
             android:textAlignment="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/softWhite" />
 
     </LinearLayout>
 

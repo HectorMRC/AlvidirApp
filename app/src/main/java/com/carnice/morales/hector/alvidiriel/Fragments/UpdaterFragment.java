@@ -240,10 +240,6 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
         // Required empty public constructor
     }
 
-    public static UpdaterFragment newInstance(String param1, String param2) {
-        return  new UpdaterFragment();
-    }
-
     //FUNCIONS AUXILIARS:
     /*pre: cert*/
     /*post: s'han intercanviat els mots WordText i TranText*/
@@ -427,7 +423,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
             reset(true);
         }
 
-        else toaster.standardToast(getText(R.string.reboke_action).toString());
+        else toaster.customizedToast(getLayoutInflater(), getView(), getText(R.string.reboke_action).toString(), getContext().getDrawable(R.drawable.ic_error_vector));
     }
 
     /*pre: cert*/
