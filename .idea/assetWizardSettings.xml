@@ -34,7 +34,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/media/hector/TOSHIBA_EXT/Ubuntu/Studio/android-studio-ide-173.4720617-linux/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_playlist_add_check_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/media/hector/TOSHIBA_EXT/Ubuntu/Studio/android-studio-ide-173.4720617-linux/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_account_balance_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -44,7 +44,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_added" />
+                                      <entry key="outputName" value="ic_campus" />
                                     </map>
                                   </option>
                                 </PersistentState>

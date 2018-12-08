@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +36,7 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
 
     ImageButton TurnBack, ShowOptions;
     Button RefrButton, RootButton, BackPageButton;
+    PopupMenu optionsMenu;
 
     TextView ItemType, ItemWord, ItemTran, ItemFon;
     LinearLayout ItemFlag;
@@ -71,7 +73,7 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.onItem_options:
-                //showOptionsMenu();
+                showOptionsMenu(v);
 
             default: break;
         }
@@ -194,6 +196,20 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
 
             DotLayout.addView(Dots[i]);
         }
+    }
+
+    /*pre: cert*/
+    /*post: obre el menú d'opcions.*/
+    public void showOptionsMenu(View view){
+        if(optionsMenu == null) {
+            optionsMenu = new PopupMenu(this, view);
+            optionsMenu.setOnMenuItemClickListener(this);
+
+            MenuInflater inflater = optionsMenu.getMenuInflater();
+            inflater.inflate(R.menu.onitem_menu, optionsMenu.getMenu());
+        }
+        
+        optionsMenu.show();
     }
 
 }
