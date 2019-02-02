@@ -91,6 +91,7 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        BackPageButton.setTextColor(getColor(position == 0? R.color.nonOpaqueWhite : R.color.softWhiteX2));
     }
 
     @Override
