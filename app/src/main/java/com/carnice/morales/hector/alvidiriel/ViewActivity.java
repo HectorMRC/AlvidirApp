@@ -208,7 +208,7 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
             MenuInflater inflater = optionsMenu.getMenuInflater();
             inflater.inflate(R.menu.onitem_menu, optionsMenu.getMenu());
         }
-        
+
         optionsMenu.show();
     }
 

@@ -65,7 +65,7 @@ public class FilesManager {
 
         for(String line; (line = buffer.readLine()) != null; dbManager.executeStatement(line))
             while(line.charAt(line.length()-1) != ';')
-                line = "\n".concat(line.concat(buffer.readLine()));
+                line = line.concat("\n").concat(buffer.readLine());
 
         buffer.close();
     }
