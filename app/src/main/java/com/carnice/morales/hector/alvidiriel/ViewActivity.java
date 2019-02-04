@@ -1,6 +1,8 @@
 package com.carnice.morales.hector.alvidiriel;
 
 import android.content.ContentValues;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
@@ -33,9 +35,10 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
 
     //DECLARACIÓ D'OBJECTES:
     private HashSet<ContentValues> References;
+    private int CurrentPage;
 
     ImageButton TurnBack, ShowOptions;
-    Button RefrButton, RootButton, BackPageButton;
+    Button RefrButton, RootButton, BackPageButton, AddPageButton;
     PopupMenu optionsMenu;
 
     TextView ItemType, ItemWord, ItemTran, ItemFon;
@@ -45,7 +48,7 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
     TextView[] Dots;
 
     ViewPager SlideViewPager;
-    private SliderAdapter sliderAdapter;
+    SliderAdapter sliderAdapter;
 
     //OVERRIDES:
     @Override
@@ -68,12 +71,18 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
                 super.onBackPressed();
                 break;
 
+            case R.id.onItem_add:
+                setActionForReturn("a:".concat(String.valueOf(CurrentPage)));
+                break;
+
             case R.id.onItem_backpage:
                 SlideViewPager.setCurrentItem(0, true);
+                CurrentPage = 0;
                 break;
 
             case R.id.onItem_options:
                 showOptionsMenu(v);
+                break;
 
             default: break;
         }
@@ -92,6 +101,7 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         BackPageButton.setTextColor(getColor(position == 0? R.color.nonOpaqueWhite : R.color.softWhiteX2));
+        CurrentPage = position;
     }
 
     @Override
@@ -105,10 +115,25 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        if(item.getItemId() == R.id.action_delete){
-            //Confirma l'acció
+        String actionData = "";
+        switch (item.getItemId()){
+            case R.id.action_delete:
+                actionData = "d";
+                break;
+
+            case R.id.action_edit:
+                actionData = "e:".concat(String.valueOf(CurrentPage));
+                break;
+
+            case R.id.action_refer:
+                actionData = "r";
+                break;
+
+            default:
+                break;
         }
 
+        setActionForReturn(actionData);
         return false;
     }
 
@@ -134,6 +159,8 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
         RootButton.setOnClickListener(this);
         BackPageButton = findViewById(R.id.onItem_backpage);
         BackPageButton.setOnClickListener(this);
+        AddPageButton = findViewById(R.id.onItem_add);
+        AddPageButton.setOnClickListener(this);
 
         ItemType = findViewById(R.id.onItem_type);
         ItemWord = findViewById(R.id.onItem_word);
@@ -179,6 +206,16 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
                 "Té ".concat(String.valueOf(References.size())).concat(" sinonims"));
 
         ItemFlag.setBackgroundColor(getIntent().getExtras().getInt("ThisFlag"));
+    }
+
+    /*pre: cert*/
+    /*post: finalitza l'activity duent a terme l'acció seleccionada.*/
+    private void setActionForReturn(String data){
+        Intent action = new Intent();
+        action.setData(Uri.parse(data));
+
+        setResult(RESULT_OK, action);
+        finish();
     }
 
     /*pre: cert*/
