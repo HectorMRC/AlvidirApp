@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
 import android.support.v4.util.Pair;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,8 @@ import com.carnice.morales.hector.alvidiriel.ViewActivity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+
+import static android.app.Activity.RESULT_OK;
 
 public class ListViewFragment extends ListFragment implements AdapterView.OnItemClickListener,
                                                               AdapterView.OnItemLongClickListener,
@@ -55,6 +58,13 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
         getListView().setOnItemLongClickListener(this);
         getListView().setOnScrollListener(this);
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            Log.i("TROLOLO", data.getData().toString());
+        }
     }
 
     @Override
@@ -97,7 +107,7 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
         intent.putExtra("ThisFlag", listViewAdapter.getItem(i).getFlag());
         intent.putExtra("ThisInfo", tupla.getAsString(keys[3]));
 
-        getContext().startActivity(intent);
+        startActivityForResult(intent, RESULT_OK);
     }
 
     @Override
