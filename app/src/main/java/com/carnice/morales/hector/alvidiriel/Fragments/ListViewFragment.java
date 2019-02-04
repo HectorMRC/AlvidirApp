@@ -25,6 +25,7 @@ import com.carnice.morales.hector.alvidiriel.ViewActivity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.StringTokenizer;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -63,7 +64,24 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK) {
-            
+            String[] depurat = data.getData().toString().split(":");
+            switch (depurat[0]){
+                case "d":
+                    DBManager dbManager = new DBManager(getContext());
+                    dbManager.deleteItem(depurat[1], depurat[2]);
+                    ((MainActivity) getContext()).refreshListView();
+                    break;
+
+                case "r":
+                    ((MainActivity) getContext()).swapFrameLayoutVisibility(true);
+                    UpdaterFragment.getInstance().swapEquivalVisivility();
+                    break;
+
+                case "a":
+                case "e":
+                    break;
+
+            }
         }
     }
 

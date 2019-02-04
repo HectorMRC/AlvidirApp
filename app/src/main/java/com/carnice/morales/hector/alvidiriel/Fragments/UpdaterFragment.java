@@ -44,6 +44,8 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
                                                          Observer,
                                                          Linker<Pair<String, String>, String>{
     //DECLARACIÓ D'OBJECTES:
+    private static UpdaterFragment current;
+
     private Subject Subject;
     private Linker<Pair<String, String>, String> ItemSelectedGiver;
     private boolean erasing = false; //Indica si s'està esborrant o no l'InfoText
@@ -67,6 +69,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
 
         (Subject = ListViewAdapter.getCurrentInstance()).setObserver(this);
         ItemSelectedGiver = ListViewFragment.getCurrentInstance();
+        current = this;
     }
 
     @Override
@@ -295,7 +298,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
 
     /*pre: cert*/
     /*post: s'ha establer la visivilitat del Check Equ. segons l'estat del check Equival*/
-    private void swapEquivalVisivility() {
+    public void swapEquivalVisivility() {
         EquSelectors.setVisibility(Equival.isChecked()? View.VISIBLE : View.GONE);
         if(EquSelectors.getVisibility() == View.GONE){
             EquWord.setChecked(false);
@@ -507,5 +510,11 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
         Afegir.setText(R.string.afegir);
 
         purgeItemSelected(purge);
+    }
+
+    /*pre: cert*/
+    /*post: singleton*/
+    public static UpdaterFragment getInstance(){
+        return current;
     }
 }
