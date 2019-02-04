@@ -80,6 +80,7 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
                     UpdaterFragment.getInstance().setItemValuesForAction(currentSelection, depurat[0].equals("r"));
                     if(depurat[0].equals("r")) break;
 
+
                     //TODO: accions referents a la pagina n definida per a:n o e:n
                     break;
 

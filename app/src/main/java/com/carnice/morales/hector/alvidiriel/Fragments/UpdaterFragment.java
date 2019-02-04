@@ -37,6 +37,8 @@ import com.carnice.morales.hector.alvidiriel.Utils.Toaster;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.zip.Inflater;
+import java.util.zip.InflaterOutputStream;
 
 public class UpdaterFragment extends Fragment implements View.OnClickListener,
                                                          PopupMenu.OnMenuItemClickListener,
@@ -510,6 +512,12 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
         Afegir.setText(R.string.afegir);
 
         purgeItemSelected(purge);
+    }
+
+    /*pre: cert*/
+    /*post: situa el cursor a la posició index del text d'informació*/
+    public void setSelection(int index){
+        InfoText.setSelection(index < InfoText.getText().length()? index : InfoText.getText().length()-1);
     }
 
     /*pre: cert*/

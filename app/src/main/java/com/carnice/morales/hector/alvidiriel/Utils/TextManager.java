@@ -125,4 +125,12 @@ public class TextManager {
     public int parseInt(String string){
         return parseInt(string, 0);
     }
+
+    public int getPosition(String origin, String subject, int rep){
+        int position = 0;
+        for(int itr = 0; itr < rep && position < origin.length(); itr++)
+            position = origin.indexOf(subject, position+1);
+
+        return position;
+    }
 }
