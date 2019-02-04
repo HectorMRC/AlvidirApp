@@ -36,6 +36,7 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
     private ListViewAdapter listViewAdapter;
     private int currentItemOnScroll;
     private static ListViewFragment CurrentInstance;
+    private Pair<String, String> currentSelection;
 
     //OVERRIDES:
     @Override
@@ -68,17 +69,18 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
             switch (depurat[0]){
                 case "d":
                     DBManager dbManager = new DBManager(getContext());
-                    dbManager.deleteItem(depurat[1], depurat[2]);
+                    dbManager.deleteItem(currentSelection.first, currentSelection.second);
                     ((MainActivity) getContext()).refreshListView();
                     break;
 
                 case "r":
-                    ((MainActivity) getContext()).swapFrameLayoutVisibility(true);
-                    UpdaterFragment.getInstance().swapEquivalVisivility();
-                    break;
-
                 case "a":
                 case "e":
+                    ((MainActivity) getContext()).swapFrameLayoutVisibility(true);
+                    UpdaterFragment.getInstance().setItemValuesForAction(currentSelection, depurat[0].equals("r"));
+                    if(depurat[0].equals("r")) break;
+
+                    //TODO: accions referents a la pagina n definida per a:n o e:n
                     break;
 
             }
@@ -125,6 +127,7 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
         intent.putExtra("ThisFlag", listViewAdapter.getItem(i).getFlag());
         intent.putExtra("ThisInfo", tupla.getAsString(keys[3]));
 
+        currentSelection = new Pair<>(listViewAdapter.getItem(i).getWord(), listViewAdapter.getItem(i).getTran());
         startActivityForResult(intent, 101);
     }
 

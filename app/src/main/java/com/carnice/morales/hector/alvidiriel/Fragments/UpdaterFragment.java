@@ -261,7 +261,7 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
 
     /*pre: item no és buit*/
     /*post: s'han configurat els components del layout segons l'item entrat*/
-    private void setItemValuesForAction(Pair<String, String> item, boolean toRefer){
+    public void setItemValuesForAction(Pair<String, String> item, boolean toRefer){
         DBManager dbManager = new DBManager(getContext());
 
         String where = dbManager.getKey()[0] + " LIKE ? AND " + dbManager.getKey()[1] + " LIKE ? ";

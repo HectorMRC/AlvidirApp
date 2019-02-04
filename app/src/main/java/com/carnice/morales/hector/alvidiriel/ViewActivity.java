@@ -72,7 +72,7 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.onItem_add:
-                setActionForReturn("a:".concat(ItemWord.getText().toString()).concat(":").concat(ItemTran.getText().toString()).concat(String.valueOf(CurrentPage)));
+                setActionForReturn("a:".concat(String.valueOf(CurrentPage)));
                 break;
 
             case R.id.onItem_backpage:
@@ -118,15 +118,15 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
         String actionData = "";
         switch (item.getItemId()){
             case R.id.action_delete:
-                actionData = "d:".concat(ItemWord.getText().toString()).concat(":").concat(ItemTran.getText().toString());
+                actionData = "d:";
                 break;
 
             case R.id.action_edit:
-                actionData = "e:".concat(ItemWord.getText().toString()).concat(":").concat(ItemTran.getText().toString()).concat(String.valueOf(CurrentPage));
+                actionData = "e:".concat(String.valueOf(CurrentPage));
                 break;
 
             case R.id.action_refer:
-                actionData = "r:".concat(ItemWord.getText().toString()).concat(":").concat(ItemTran.getText().toString());
+                actionData = "r:";
                 break;
 
             default:
