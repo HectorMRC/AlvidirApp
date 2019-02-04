@@ -62,8 +62,8 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            Log.i("TROLOLO", data.getData().toString());
+        if(resultCode == RESULT_OK) {
+            
         }
     }
 
@@ -107,7 +107,7 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
         intent.putExtra("ThisFlag", listViewAdapter.getItem(i).getFlag());
         intent.putExtra("ThisInfo", tupla.getAsString(keys[3]));
 
-        startActivityForResult(intent, RESULT_OK);
+        startActivityForResult(intent, 101);
     }
 
     @Override
