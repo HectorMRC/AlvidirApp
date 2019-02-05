@@ -79,9 +79,8 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
                 case "e":
                     ((MainActivity) getContext()).swapFrameLayoutVisibility(true);
                     UpdaterFragment.getInstance().setItemValuesForAction(currentSelection, depurat[0].equals("r"));
-                    if(depurat[0].equals("r")) break;
+                    if(!depurat[0].equals("a")) break;
 
-                    UpdaterFragment.getInstance().setSelection(getString(R.string.divider), Integer.parseInt(depurat[1]));
                     break;
 
             }

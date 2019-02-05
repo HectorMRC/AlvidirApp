@@ -19,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -39,6 +40,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterOutputStream;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class UpdaterFragment extends Fragment implements View.OnClickListener,
                                                          PopupMenu.OnMenuItemClickListener,
@@ -512,13 +515,6 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
         Afegir.setText(R.string.afegir);
 
         purgeItemSelected(purge);
-    }
-
-    /*pre: cert*/
-    /*post: situa el cursor a la posició index del text d'informació*/
-    public void setSelection(String subject, int rep){
-        int index = new TextManager(getContext()).getPosition(InfoText.getText().toString(), subject, rep);
-        if(index > -1) InfoText.setSelection(index < InfoText.getText().length()? index : InfoText.getText().length()-1);
     }
 
     /*pre: cert*/

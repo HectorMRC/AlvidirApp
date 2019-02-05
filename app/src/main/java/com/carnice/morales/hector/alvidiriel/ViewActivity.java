@@ -122,7 +122,7 @@ public class ViewActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.action_edit:
-                actionData = "e:".concat(String.valueOf(CurrentPage));
+                actionData = "e:";
                 break;
 
             case R.id.action_refer:
