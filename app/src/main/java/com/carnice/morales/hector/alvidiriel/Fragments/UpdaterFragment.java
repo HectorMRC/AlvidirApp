@@ -516,8 +516,9 @@ public class UpdaterFragment extends Fragment implements View.OnClickListener,
 
     /*pre: cert*/
     /*post: situa el cursor a la posició index del text d'informació*/
-    public void setSelection(int index){
-        InfoText.setSelection(index < InfoText.getText().length()? index : InfoText.getText().length()-1);
+    public void setSelection(String subject, int rep){
+        int index = new TextManager(getContext()).getPosition(InfoText.getText().toString(), subject, rep);
+        if(index > -1) InfoText.setSelection(index < InfoText.getText().length()? index : InfoText.getText().length()-1);
     }
 
     /*pre: cert*/

@@ -21,6 +21,7 @@ import com.carnice.morales.hector.alvidiriel.R;
 import com.carnice.morales.hector.alvidiriel.Utils.DBManager;
 import com.carnice.morales.hector.alvidiriel.Utils.ListViewAdapter;
 import com.carnice.morales.hector.alvidiriel.Utils.ListViewObject;
+import com.carnice.morales.hector.alvidiriel.Utils.TextManager;
 import com.carnice.morales.hector.alvidiriel.ViewActivity;
 
 import java.util.ArrayList;
@@ -80,8 +81,7 @@ public class ListViewFragment extends ListFragment implements AdapterView.OnItem
                     UpdaterFragment.getInstance().setItemValuesForAction(currentSelection, depurat[0].equals("r"));
                     if(depurat[0].equals("r")) break;
 
-
-                    //TODO: accions referents a la pagina n definida per a:n o e:n
+                    UpdaterFragment.getInstance().setSelection(getString(R.string.divider), Integer.parseInt(depurat[1]));
                     break;
 
             }
